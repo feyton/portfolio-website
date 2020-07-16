@@ -1,0 +1,51 @@
+:root {
+    --bg-color: #fff;
+    --link-color: rgb(31, 90, 146);
+    --link-hover: rgb(52, 96, 136);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    color: #fff;
+}
+
+.navbar a {
+    color: var(--link-color);
+
+}
+
+.navbar a:hover {
+    color: var(--link-hover);
+}
+
+.navbar .input-group {
+    margin: 0;
+    margin-left: -3px;
+    margin-right: 5px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    border-radius: 30%;
+}
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    border-radius: 30%;
+}
+
+

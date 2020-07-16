@@ -1,0 +1,225 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+{{query}}
+{% endblock title %}
+
+{% block body %}
+
+<body data-spy="scroll" data-target=".fixed-top"
+    style="background-image: url('/static/images/header-background.jpg') ;">
+    {% endblock body %}
+
+
+
+
+    {% block content %}
+    <!-- About -->
+    <div id="about" class="basic-4 mt-5 pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>You searched for: <span class="text-info bold capitalize">{{query}}</span></h2>
+
+                </div> <!-- end of col -->
+
+            </div> <!-- end of row -->
+            <div class="row ">
+                <div class="col-xg-8 col-md-8 col-sm-12">
+                    <div class="news_container">
+                        {% for post in posts %}
+                        <!-- News Post -->
+                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <div class="news_post_image">
+
+                                <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
+                                    class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                            </div>
+
+                            <div class="news_post_content text-left ml-1">
+                                <div class="news_post_title title-link">
+                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                </div>
+
+                                <div class="news_post_text text-left">
+                                    <p>{{post.summary|safe}}</p>
+                                </div>
+                                <div class="button-group">
+                                    <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
+                                        More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {%empty%}
+                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <h4>Sorry! We didn't find what you are looking for</h4>
+                        </div>
+                        {% endfor %}
+
+
+
+                    </div>
+                </div>
+
+                <!-- News Sidebar -->
+                <div class="col-xl-4 col-md-4 col-sm-12 mt-2">
+
+                    {% if terms %}
+                    <div class="card category mt-1">
+                        <div class="card-header">
+                            <h3>Related searches:</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+
+                                {% for term in terms %}
+                                <li class="media">
+                                    <div class="media-body text-left">
+                                        <i class="fa fa-arrow-alt-circle-right"></i>&nbsp;<a
+                                            href="{{term.get_absolute_url}}"
+                                            class="link">{{term.term|truncatechars:20}}</a>
+                                    </div>
+
+
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
+                    {% endif %}
+
+                    <div class="card category mt-1">
+                        <div class="card-header">
+                            <h3>Popular Tags</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-left">
+                                {% for tag in tags %}
+                                <li class="media">
+
+                                    <div class="media-body"><a href="{{tag.get_absolute_url}}"
+                                            class="n-decocartion n-hover link-move bold link-info"><span
+                                                class="turquoise">#</span> {{tag.name}}</a></div>
+                                    <i class="fas fa-check"> {{tag.posts.count}}</i>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end of container -->
+    </div> <!-- end of basic-4 -->
+    <!-- end of about -->
+    {% endblock %}
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-col">
+                        <h4>About Evolo</h4>
+                        <p>We're passionate about offering some of the best business growth services for startups</p>
+                    </div>
+                </div> <!-- end of col -->
+                <div class="col-md-4">
+                    <div class="footer-col middle">
+                        <h4>Important Links</h4>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Our business partners <a class="turquoise"
+                                        href="#your-link">startupguide.com</a></div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Read our <a class="turquoise" href="terms-conditions.html">Terms
+                                        & Conditions</a>, <a class="turquoise" href="privacy-policy.html">Privacy
+                                        Policy</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- end of col -->
+                <div class="col-md-4">
+                    <div class="footer-col last">
+                        <h4>Social Media</h4>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-google-plus-g fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of footer -->
+    <!-- end of footer -->
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">Inovatik</a> - All rights
+                        reserved</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script>
+        $('.image-link').click(function (e) {
+            window.location.href = ($(this).data('url'))
+        });
+        $('.form-submit').click(function (e) {
+            $(this).closest('form').submit()
+        })
+    </script>
+</body>
+
+</html>

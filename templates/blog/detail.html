@@ -1,0 +1,236 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+<!-- Website Title -->
+{% block title %}
+{{post.title}}
+{% endblock title %}
+
+{% block desc %} {{title}}
+{% endblock desc %}
+{% block summary %} {{post.summary}}
+{% endblock summary %}
+
+{% block body %}
+
+<body data-spy="scroll" data-target=".fixed-top" style="background-image: url('/static/images/header-background.jpg') ;"
+    class="blog-body">
+    {% endblock body %}
+
+    {% block content %}
+
+    <!-- About -->
+    <div id="about" class="basic-3 mt-4">
+        <div class="container">
+            <div class="row ">
+                <div class="col-xg-8 col-md-8 col-sm-12 ">
+                    <div class="card post-view">
+                        <div class="card-header">
+                            <h2 class=" ">{{post.title}}</h2>
+                        </div>
+                        <div class="card-body text-left">
+                            <div class="card-post text-left">
+                                {{post.content|safe}}
+
+                            </div>
+                            <div class="button-group ">
+                                <a href="" class="btn btn-outline-primary float-left mb-2 mt-4">Another post</a>
+                                <a href="" class="btn btn-outline-success float-right mb-2 mt-4">Another one</a>
+                            </div>
+                            <div class="author ">
+                                <div class="author-image col-md-4 col-sm-4">
+
+                                    <img src="/static/img/favicon.png" alt="author image" height="150" width="150">
+                                    <h3 class="name"><a href="#author">{{post.author.get_short_name}}</a> </h3>
+                                </div>
+                                <div class="info col-md-8 col-sm-8">
+                                    <div class="row">
+
+                                        <p class="bio">{{post.author.profile.biography}}</p>
+                                    </div>
+                                    <b>Follow me:</b>
+                                    <ul class="social-author row">
+                                        <li><a href="https://wa.me/{{ blog_post.author.telephone|safe}}"
+                                                target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp</a>
+                                        </li>
+
+                                        <li><a href="https://{{ blog_post.author.facebook|safe}}" target="_blank"><i
+                                                    class="fab fa-facebook"></i>&nbsp;Facebook</a></li>
+
+                                        <li><a href="https://{{ blog_post.author.twitter}}" target="_blank"><i
+                                                    class="fab fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="comment-box text-center mt-2">
+                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">ADD/ VIEW COMMENTS</a>
+                    </div>
+                </div>
+
+                <!-- News Sidebar -->
+                <div class="col-xl-4 col-md-4 col-sm-12 ">
+                    <div class="card">
+                        <div class="card-header text-underline">
+                            <h3>Post Stats</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled stats">
+                                <li>Visits: <span>1000</span></li>
+                                <li>Comments: <span>{{post.comments.count}}</span></li>
+                                {% comment %} <li>Shares: </li> {% endcomment %}
+                                <li>Category: <span><a href="{{post.category.get_absolute_url}}"
+                                            class="link link-move link-success-sm capitalize">{{post.category}}</a></span>
+                                </li>
+                                <li>Tags:
+                                    <ul class="capitalize">
+                                        {% for tag in post.tags.all %}
+                                        <li><a href="{{tag.get_absolute_url}}"
+                                                class="link link-move link-info">{{tag.name}}</a></li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card mt-2">
+                        <div class="card-header">
+                            <h3>You can read also</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- start single post -->
+                            {% for post in posts %}
+                            <div class="row border-bottom p-1">
+                                <div class="col-sm-3 overflow-hidden ">
+                                    <img src="/static/img/post.jpg" alt="" height="50px" width="100%">
+                                </div>
+                                <div class="col-sm-9 ">
+                                    <a href="{{post.get_absolute_url}}"
+                                        class="link link-move link-success wrap bold v-center">{{post.title}}</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- End single post -->
+                        </div>
+                    </div>
+                    <div class="card category mt-1">
+                        <div class="card-header">
+                            <h3>Categories</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                {% for cat in categories %}
+                                <li class="media">
+                                    <div class="media-body"><a href="{{cat.get_absolute_url}}"
+                                            class="n-decocartion n-hover link-move bold link-info">{{cat.title}}</a>
+                                    </div>
+                                    <i class="fas fa-check">&nbsp;({{cat.posts.count}})</i>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-4 -->
+    <!-- end of about -->
+
+    <!-- News -->
+    <div id="details-lightbox-2" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="container">
+            <div class="row">
+                <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                <div class="col-lg-8">
+                    <div class="text-container">
+                        <h2>Comments</h2>
+                        <div class="comments-list overflow-scroll">
+                            <ul class=" list-unstyled">
+                                {% for comment in post.comments.all %}
+                                <li class="threaded-comments">
+                                    <div class="comments-details">
+                                        <div class="comments-list-img rounded">
+                                            <div class="row">
+                                                <img src="/static/img/b02.jpg" alt="post-author">
+                                            </div>
+                                            <div class="row">
+                                                <b>{{comment.name}}</b>
+                                            </div>
+
+                                        </div>
+                                        <div class="comments-content-wrap">
+                                            <span>
+                                                <b>Posted: </b>
+                                                <span class="post-time">{{comment.created_on}} </span>
+                                            </span>
+                                            <p>{{comment.body}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {%empty%}
+                                <p>Be the first to comment</p>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-4">
+                    <!-- Request Form -->
+                    <div class="form-container">
+                        <h5>Leave a comment</h5>
+                        <p>Your email will not be published</p>
+                        <form method='post' action='.'>
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" id="id_name" name="name" required>
+                                <label class="label-control" for="id_name">Full name</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control-input" id="id_email" name="email" required>
+                                <label class="label-control" for="id_email">Email</label>
+
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="body" class="form-control-input" id="" cols="30" rows="3"></textarea>
+                                <label for="id_body" class="label-control">Comment</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="rterms" value="Agreed-to-Terms" name="rterms" required>I
+                                agree with Feyton Inc's stated <a href="{% url 'privacy' %}">Privacy Policy</a> and <a
+                                    href="{% url 'terms' %}">Terms & Conditions</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control-submit-button">LEAVE COMMENT</button>
+                            </div>
+                            <div class="form-message">
+                                <div id="rmsgSubmit" class="h3 text-center hidden"></div>
+                            </div>
+                        </form>
+                    </div> <!-- end of form-container -->
+                    <!-- end of request form -->
+
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of lightbox-basic -->
+
+
+
+    {% endblock content %}

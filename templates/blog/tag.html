@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}
+{{tag.title}}
+{% endblock title %}
+{% block body %}
+
+<body data-spy="scroll" data-target=".fixed-top"
+    style="background-image: url('/static/images/header-background.jpg') ;">
+    {% endblock body %}
+
+
+
+
+    {% block content %}
+
+    <!-- About -->
+    <div id="about" class="basic-4 mt-5 pt-4">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-12 p-2">
+                    <h2>Posts tagged: <span class="text-success bold capitalize"># {{tag.name}}</span></h2>
+                    <p class="p-heading p-large">{{category.summary}}</p>
+                </div> <!-- end of col -->
+
+            </div> <!-- end of row -->
+            <div class="row mt-4">
+                <div class="col-xg-8 col-md-8 col-sm-12">
+                    <div class="news_container">
+                        {% for post in posts %}
+                        <!-- News Post -->
+                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <div class="news_post_image">
+
+                                <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
+                                    class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                            </div>
+
+                            <div class="news_post_content text-left ml-1">
+                                <div class="news_post_title title-link">
+                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                </div>
+
+                                <div class="news_post_text text-left">
+                                    <p>{{post.summary|safe}}</p>
+                                </div>
+                                <div class="button-group">
+                                    <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
+                                        More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {%empty%}
+                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <h4>No posts are tagged <span class="text-info">{{tag.name}}</span> yet!!</h4>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- News Sidebar -->
+                <div class="col-xl-4 col-md-4 col-sm-12 mt-2">
+                    <div class="card category mt-1">
+                        <div class="card-header">
+                            <h3>Categories</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                {% for cat in categories %}
+                                <li class="media">
+                                    <div class="media-body text-left">
+                                        <a href="{{cat.get_absolute_url}}" class='n-decoration n-hover'>
+                                            <i class="fa fa-arrow-alt-circle-right"></i>&nbsp;{{cat.title}} (#
+                                            {{cat.posts.count}})
+                                        </a>
+                                    </div>
+
+
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card category mt-1">
+                        <div class="card-header">
+                            <h3>Popular Tags</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-left">
+                                {% for t in tags %}
+                                <li class="media">
+
+                                    <div class="media-body"><a href="{{t.get_absolute_url}}"
+                                            class="n-decocartion n-hover link-move bold link-info"><span
+                                                class="turquoise">#</span> {{t.name}}</a></div>
+                                    <i class="fas fa-check"> {{t.posts.count}}</i>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end of container -->
+
+    {% endblock content %}
