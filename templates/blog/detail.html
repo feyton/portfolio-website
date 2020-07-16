@@ -35,8 +35,8 @@
 
                             </div>
                             <div class="button-group ">
-                                <a href="" class="btn btn-outline-primary float-left mb-2 mt-4">Another post</a>
-                                <a href="" class="btn btn-outline-success float-right mb-2 mt-4">Another one</a>
+                                <a href="{% url 'blog' %}" class="btn btn-outline-primary float-left mb-2 mt-4">BACK</a>
+                                <a href="{% url 'home' %}" class="btn btn-outline-success float-right mb-2 mt-4">HOME</a>
                             </div>
                             <div class="author ">
                                 <div class="author-image col-md-4 col-sm-4">
@@ -49,20 +49,26 @@
 
                                         <p class="bio">{{post.author.profile.biography}}</p>
                                     </div>
+                                    {% if post.author.facebook or post.author.telephone or post.author.twitter %}
                                     <b>Follow me:</b>
                                     <ul class="social-author row">
-                                        <li><a href="https://wa.me/{{ blog_post.author.telephone|safe}}"
+                                    {% if post.author.telephone %}
+                                        <li><a href="https://wa.me/{{ post.author.telephone|safe}}"
                                                 target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp</a>
                                         </li>
-
-                                        <li><a href="https://{{ blog_post.author.facebook|safe}}" target="_blank"><i
+                                        {% endif %}
+                                            {% if post.author.facebook %}
+                                        <li><a href="https://{{ post.author.facebook|safe}}" target="_blank"><i
                                                     class="fab fa-facebook"></i>&nbsp;Facebook</a></li>
-
-                                        <li><a href="https://{{ blog_post.author.twitter}}" target="_blank"><i
+                                                    {% endif %}
+                                        {% if post.author.facebook %}
+                                        <li><a href="https://{{ post.author.twitter}}" target="_blank"><i
                                                     class="fab fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a>
                                         </li>
+                                        {% endif %}
 
                                     </ul>
+                                    {% endif %}
 
                                 </div>
                             </div>
@@ -82,7 +88,7 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled stats">
-                                <li>Visits: <span>1000</span></li>
+                                {% comment %} <li>Visits: <span>1000</span></li> {% endcomment %}
                                 <li>Comments: <span>{{post.comments.count}}</span></li>
                                 {% comment %} <li>Shares: </li> {% endcomment %}
                                 <li>Category: <span><a href="{{post.category.get_absolute_url}}"
@@ -107,13 +113,13 @@
                         <div class="card-body">
                             <!-- start single post -->
                             {% for post in posts %}
-                            <div class="row border-bottom p-1">
+                            <div class="row border-bottom p-1 overflow-hidden">
                                 <div class="col-sm-3 overflow-hidden ">
                                     <img src="/static/img/post.jpg" alt="" height="50px" width="100%">
                                 </div>
                                 <div class="col-sm-9 ">
                                     <a href="{{post.get_absolute_url}}"
-                                        class="link link-move link-success wrap bold v-center">{{post.title}}</a>
+                                        class="link link-move link-success bold v-center">{{post.title}}</a>
                                 </div>
                             </div>
                             {% endfor %}
