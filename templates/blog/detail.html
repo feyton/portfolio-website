@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
+{% load hitcount_tags %}
 
 <!-- Website Title -->
 {% block title %}
@@ -36,34 +37,41 @@
                             </div>
                             <div class="button-group ">
                                 <a href="{% url 'blog' %}" class="btn btn-outline-primary float-left mb-2 mt-4">BACK</a>
-                                <a href="{% url 'home' %}" class="btn btn-outline-success float-right mb-2 mt-4">HOME</a>
+                                <a href="{% url 'home' %}"
+                                    class="btn btn-outline-success float-right mb-2 mt-4">HOME</a>
                             </div>
                             <div class="author ">
                                 <div class="author-image col-md-4 col-sm-4">
 
+                                    {% if post.author.profile.image %}
+
+                                    <img src="{{post.author.profile.image.url}}" alt="author image" height="150"
+                                        width="150">
+                                    {% else %}
                                     <img src="/static/img/favicon.png" alt="author image" height="150" width="150">
+                                    {% endif %}
                                     <h3 class="name"><a href="#author">{{post.author.get_short_name}}</a> </h3>
                                 </div>
                                 <div class="info col-md-8 col-sm-8">
                                     <div class="row">
-
                                         <p class="bio">{{post.author.profile.biography}}</p>
                                     </div>
-                                    {% if post.author.facebook or post.author.telephone or post.author.twitter %}
+                                    {% if post.author.profile.facebook_username or post.author.profile.whatsapp_username or post.author.profile.twitter_username %}
                                     <b>Follow me:</b>
                                     <ul class="social-author row">
-                                    {% if post.author.telephone %}
-                                        <li><a href="https://wa.me/{{ post.author.telephone|safe}}"
+                                        {% if post.author.profile.whatsapp_username %}
+                                        <li><a href="https://wa.me/{{ post.author.profile.whatsapp_username|safe}}"
                                                 target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp</a>
                                         </li>
                                         {% endif %}
-                                            {% if post.author.facebook %}
-                                        <li><a href="https://{{ post.author.facebook|safe}}" target="_blank"><i
-                                                    class="fab fa-facebook"></i>&nbsp;Facebook</a></li>
-                                                    {% endif %}
-                                        {% if post.author.facebook %}
-                                        <li><a href="https://{{ post.author.twitter}}" target="_blank"><i
-                                                    class="fab fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a>
+                                        {% if post.author.profile.facebook_username %}
+                                        <li><a href="https://fb.me/{{ post.author.profile.facebook_username|safe}}"
+                                                target="_blank"><i class="fab fa-facebook"></i>&nbsp;Facebook</a></li>
+                                        {% endif %}
+                                        {% if post.author.profile.twitter_username %}
+                                        <li><a href="https://twitter.com/{{ post.author.profile.twitter_username}}"
+                                                target="_blank"><i class="fab fa-twitter"
+                                                    aria-hidden="true"></i>&nbsp;Twitter</a>
                                         </li>
                                         {% endif %}
 
@@ -88,7 +96,8 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled stats">
-                                {% comment %} <li>Visits: <span>1000</span></li> {% endcomment %}
+                                <li>Visits: <span>{% get_hit_count for post %}</span></li>
+
                                 <li>Comments: <span>{{post.comments.count}}</span></li>
                                 {% comment %} <li>Shares: </li> {% endcomment %}
                                 <li>Category: <span><a href="{{post.category.get_absolute_url}}"

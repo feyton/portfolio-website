@@ -26,6 +26,8 @@ class Testimony(models.Model):
         upload_to='testimony/', blank=True, null=True, default='testimony/avatar.jpg')
     message = models.TextField(blank=False, null=False)
     approved = models.BooleanField(default=True)
+    role = models.CharField(max_length=50, blank=True,
+                            null=True, default='Developer')
 
     def __str__(self):
         return self.author
@@ -34,7 +36,8 @@ class Testimony(models.Model):
 class Member(models.Model):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
+    avatar = models.ImageField(
+        upload_to='team/', blank=True, null=True, default='avatar.jpg')
 
     def __str__(self):
         return self.name
-    

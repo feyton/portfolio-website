@@ -5,6 +5,7 @@ from django.views.generic import DetailView, View
 from django.db.models import Q
 from .models import Post, Category, Tag
 from .models import SearchTerms
+from hitcount.views import HitCountDetailView
 
 
 class BlogListView(View):
@@ -52,8 +53,7 @@ def post_view(request, pk, title):
         'tags': tags,
         'posts': posts
     }
-    for cat in categories:
-        print(cat.posts.count())
+    
     return render(request, 'blog/detail.html', context)
 
 

@@ -10,9 +10,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -27,6 +24,7 @@ INSTALLED_APPS = [
     'index',
     'blog',
     'user',
+    'hitcount',
     # CK Editor
     'ckeditor',
     'ckeditor_uploader',

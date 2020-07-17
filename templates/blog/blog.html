@@ -2,7 +2,7 @@
 
 {% block desc %}Blog
 {% endblock desc %}
-{% block summary %}read and learn with us. Get access to trending news in tech and development.{% endblock summary %}
+{% block summary %}Read and learn with us. Get access to trending news in tech and development.{% endblock summary %}
 
 <body data-spy="scroll" data-target=".fixed-top">
 
@@ -42,8 +42,10 @@
                                 {% endfor %}
 
                             </ul>
-                            <a href="#" class="btn btn-info btn-outline" data-target="modal" data-toggle="modal">Request
-                                Content</a> or <a href="#" class="btn btn-success btn-outline">BECOME AUTHOR</a>
+                            <a href="#" class="btn btn-info btn-outline" data-target="#request_content"
+                                data-toggle="modal">Request
+                                Content</a> or <a href="#" class="btn btn-success btn-outline" data-toggle="modal"
+                                data-target="#author">BECOME AUTHOR</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
@@ -59,12 +61,16 @@
                                     <div class="swiper-slide">
                                         <div class="card card-carousel">
                                             {% if post.thumbnail %}
-                                            <img class="card-image image-link" src="{{post.thumbnail.url}}" alt="alternative" data-url="{{post.get_absolute_url}}">
+                                            <img class="card-image image-link" src="{{post.thumbnail.url}}"
+                                                alt="alternative" data-url="{{post.get_absolute_url}}">
                                             {% else %}
-                                            <img class="card-image image-link" src="/static/img/post.jpg" alt="alternative" data-url="{{post.get_absolute_url}}">
+                                            <img class="card-image image-link" src="/static/img/post.jpg"
+                                                alt="alternative" data-url="{{post.get_absolute_url}}">
                                             {% endif %}
                                             <div class="card-body">
-                                                <p class="testimonial-text">{{post.summary|truncatechars:100}} <span class="text-info"><a href="{{post.get_absolute_url}}" class="link link-move link-success">Read more</a></span></p>
+                                                <p class="testimonial-text">{{post.summary|truncatechars:100}} <span
+                                                        class="text-info"><a href="{{post.get_absolute_url}}"
+                                                            class="link link-move link-success">Read more</a></span></p>
                                                 <p class="testimonial-author">By: {{post.author.get_full_name}}</p>
                                             </div>
                                         </div>
@@ -113,9 +119,8 @@
                                 class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
                                 <div class="news_post_image">
 
-                                    <img src="/static/img/post.jpg" alt=""
-                                        height="200px" width="300px" class="rounded image-link"
-                                        data-url="{{post.get_absolute_url}}" />
+                                    <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
+                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
                                 </div>
 
                                 <div class="news_post_content text-left ml-1">
@@ -189,4 +194,59 @@
     </div> <!-- end of basic-4 -->
     <!-- end of about -->
 
+
+    <div class="modal fade" id="request_content" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Request Content</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Coming Soon...
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="author" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Apply As Contributor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Coming Soon ...
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Request Content</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Coming Soon...
+                </div>
+
+            </div>
+        </div>
+    </div>
     {% endblock content %}
