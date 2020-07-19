@@ -253,7 +253,7 @@
                                     <img class="card-image" src="{{testimony.avatar.url}}" alt="alternative">
                                     <div class="card-body">
                                         <p class="testimonial-text">{{testimony.message}}</p>
-                                        <p class="testimonial-author">{{testimony.author}} - {{testimony.occupation}}
+                                        <p class="testimonial-author">{{testimony.author}} - {{testimony.role}}
                                         </p>
                                     </div>
                                 </div>
@@ -298,19 +298,23 @@
                 {% for member in members %}
                 <div class="team-member">
                     <div class="image-wrapper">
+                        {% if member.avatar %}
+                        <img class="img-fluid" src="{{member.avatar.url}}" alt="alternative">
+                        {% else %}
                         <img class="img-fluid" src="/static/images/team-member-1.svg" alt="alternative">
+                        {% endif %}
                     </div> <!-- end of image-wrapper -->
                     <p class="p-large"><strong>{{member.name}}</strong></p>
                     <p class="job-title capitalize">{{member.role}}</p>
                     <span class="social-icons">
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://fb.me/feytonf">
                                 <i class="fas fa-circle fa-stack-2x facebook"></i>
                                 <i class="fab fa-facebook-f fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://twitter.com/feytonf">
                                 <i class="fas fa-circle fa-stack-2x twitter"></i>
                                 <i class="fab fa-twitter fa-stack-1x"></i>
                             </a>
