@@ -7,7 +7,6 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
-from hitcount.models import HitCount
 
 User = get_user_model()
 
@@ -62,8 +61,7 @@ class Post(models.Model):
         Tag, blank=True, related_name="posts")
     thumbnail = models.ImageField(
         upload_to='blog', blank=True, null=True, default='/blog/default.jpg')
-    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
-                                        related_query_name='hit_count_generic_relation')
+    visits = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return self.title

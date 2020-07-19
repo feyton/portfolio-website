@@ -5,7 +5,7 @@ from django.views.generic import DetailView, View
 from django.db.models import Q
 from .models import Post, Category, Tag
 from .models import SearchTerms
-from hitcount.views import HitCountDetailView
+from django.http import JsonResponse
 
 
 class BlogListView(View):
@@ -53,7 +53,7 @@ def post_view(request, pk, title):
         'tags': tags,
         'posts': posts
     }
-    
+
     return render(request, 'blog/detail.html', context)
 
 
@@ -109,3 +109,17 @@ def search(request, *args, **kwargs):
         term = SearchTerms(term=query)
         term.save()
     return render(request, 'blog/search.html', context)
+
+
+def register_hit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    session = request.session
+
+    if post:
+        post.visits += 1
+        post.save()
+
+        data = {
+            'hits': post.visits
+        }
+        return JsonResponse(data)

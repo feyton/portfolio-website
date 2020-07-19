@@ -1,7 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
-{% load hitcount_tags %}
 
 <!-- Website Title -->
 {% block title %}
@@ -12,6 +11,16 @@
 {% endblock desc %}
 {% block summary %} {{post.summary}}
 {% endblock summary %}
+
+{% block page_title %}
+{{post.title}}
+{% endblock page_title %}
+
+
+{% block image %}
+{{post.thumbnail.url}}
+{% endblock image %}
+
 
 {% block body %}
 
@@ -96,7 +105,9 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled stats">
-                                <li>Visits: <span>{% get_hit_count for post %}</span></li>
+                                <li>Visits: <span id="post-visits"
+                                        data-url="{% url 'post-visit' pk=post.pk %}">{{post.visits}}</span>
+                                </li>
 
                                 <li>Comments: <span>{{post.comments.count}}</span></li>
                                 {% comment %} <li>Shares: </li> {% endcomment %}
@@ -152,6 +163,7 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -247,5 +259,27 @@
     </div> <!-- end of lightbox-basic -->
 
 
+    <script>
+        $(window).load(function (e) {
+            endpoint = $("#post-visit").data('url');
+            $.ajax({
+                url: endpoint,
+                method: 'GET',
+                success: function (data) {
+                    $("#post-visit").text(data.visits)
+                },
+                error: function (error_data) {
+                    console.log(error_data)
+                }
+            })
+        })
+
+    </script>
 
     {% endblock content %}
+
+    {% block javascript %}
+
+
+
+    {% endblock javascript %}

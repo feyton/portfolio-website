@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Create a stylish landing page for your business startup and get leads for the offered services with this HTML landing page template.">
-    <meta name="author" content="Inovatik">
+    <meta name="description" content="Welcome to Feyton Inc. Read, Learn and Improve with Us">
+    <meta name="feyton" content="Feyton Inc">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
     <meta property="og:site_name" content="Feyton Inc" /> <!-- website name -->
     <meta property="og:site" content="https://feyton.co.rw/" /> <!-- website link -->
-    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:title" content="Welcome Page" /> <!-- title shown in the actual shared post -->
     <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
-    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-    <meta property="og:type" content="article" />
+    <meta property="og:image" content="/static/img/favicon.png" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://feyton.co.rw" /> <!-- where do you want your post to link to -->
+    <meta property="og:type" content="Blog Post" />
 
     <!-- Website Title -->
     <title>Feyton Inc - {% block title %}Home{% endblock title %}</title>
@@ -37,8 +36,9 @@
     <link rel="icon" href="/static/img/favicon.png">
 </head>
 {% block body %}
+
 <body data-spy="scroll" data-target=".fixed-top">
-{% endblock body %}
+    {% endblock body %}
     <!-- Preloader -->
     <div class="spinner-wrapper d-none">
         <div class="spinner">
@@ -54,8 +54,8 @@
     {% include 'include/nav.html' %}
     <!-- end of navigation -->
 
-{% block content %}
-{% endblock content %}
+    {% block content %}
+    {% endblock content %}
 
     {% include 'include/footer.html' %}
 

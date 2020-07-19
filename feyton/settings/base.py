@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'index',
     'blog',
     'user',
-    'hitcount',
     # CK Editor
     'ckeditor',
     'ckeditor_uploader',

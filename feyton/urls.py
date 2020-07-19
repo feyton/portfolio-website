@@ -10,7 +10,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('ckeditor', include('ckeditor_uploader.urls')),
     path('accounts/', include('allauth.urls')),
-    path(r'hitcount/', include('hitcount.urls', namespace='hitcount')),
 ]
 
 

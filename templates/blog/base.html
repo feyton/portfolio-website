@@ -8,18 +8,21 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Create a stylish landing page for your business startup and get leads for the offered services with this HTML landing page template.">
-    <meta name="author" content="Inovatik">
+        content="{% block desc %}Welcome to Feyton Inc Blog. Read, Learn and Improve with Us {% endblock desc %}">
+    <meta name="feyton" content="Feyton Inc">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
     <meta property="og:site_name" content="Feyton Inc" /> <!-- website name -->
     <meta property="og:site" content="https://www.feyton.co.rw" /> <!-- website link -->
-    
-    <meta property="og:title" content="{% block desc %}Feyton Inc{% endblock desc %}" /> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content="{% block summary %}Welcome to feyton Inc{% endblock summary %}" /> <!-- description shown in the actual shared post -->
-    <meta property="og:image" content="/static/img/" /> <!-- image link, make sure it's jpg -->
+
+    <meta property="og:title" content="{% block page_title %}     {% endblock page_title %}" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="{% block summary %}Welcome to feyton Inc{% endblock summary %}" />
+    <!-- description shown in the actual shared post -->
+    <meta property="og:image" content=" {% block image %}/static/img/favicon.png{% endblock image %}" />
+    <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="https://www.feyton.co.rw/blog/" /> <!-- where do you want your post to link to -->
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="post" />
 
     <!-- Website Title -->
     <title>Feyton Inc - {% block title %}Blog{% endblock title %}</title>
@@ -41,29 +44,19 @@
 {% block body %}
 
 <body data-spy="scroll" data-target=".fixed-top">
-{% endblock body %}
-    <!-- Preloader -->
-    <div class="spinner-wrapper d-none">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-    </div>
-    <!-- end of preloader -->
-{% include 'include/nav.html' %}
+    {% endblock body %}
+    {% include 'include/nav.html' %}
 
     <!-- Navigation -->
 
 
 
-{% block content %}
-{% endblock content %}
+    {% block content %}
+    {% endblock content %}
 
-{% include 'include/footer.html' %}
-{% include 'include/js.html' %}
+    {% include 'include/footer.html' %}
+    {% include 'include/js.html' %}
 
-{% block javascript %}
-    
-{% endblock javascript %}
-    
+    {% block javascript %}
+
+    {% endblock javascript %}
