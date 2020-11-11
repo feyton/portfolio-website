@@ -118,9 +118,13 @@
                             <div
                                 class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
                                 <div class="news_post_image">
-
+                                    {% if post.thumbnail %}
+                                    <img src="{{post.thumbnail.url}}" alt="" height="200px" width="300px"
+                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                    {% else %}
                                     <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
                                         class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                    {% endif %}
                                 </div>
 
                                 <div class="news_post_content text-left ml-1">
