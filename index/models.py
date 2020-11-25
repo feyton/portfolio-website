@@ -1,4 +1,5 @@
 from django.db import models
+
 from .utils import code_generator
 
 
@@ -6,6 +7,7 @@ class AssistanceRequest(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(blank=False, null=False, unique=False)
     phone = models.CharField(max_length=15, blank=True, null=True)
+    message = models.TextField()
     assisted = models.BooleanField(default=False)
     ticket_id = models.CharField(
         blank=False, null=False, unique=True, primary_key=False, max_length=255)

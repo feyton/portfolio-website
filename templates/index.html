@@ -14,16 +14,17 @@
                         <p class="p-large">We offer a wide range of services ranging from Web Dev to Assistance and
                             more...</p>
                         <a class="btn-solid-lg page-scroll" href="#services">DISCOVER</a>
-                    </div> <!-- end of text-container -->
+                    </div>
+                    <!-- end of text-container --
                 </div> <!-- end of col -->
-                <div class="col-lg-6">
-                    <div class="image-container">
-                        <img class="img-fluid" src="/static/img/teams1.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of header-content -->
+                    <div class="col-lg-6">
+                        <div class="image-container">
+                            <img class="img-fluid" src="/static/img/teams1.png" alt="alternative">
+                        </div> <!-- end of image-container -->
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
 </header> <!-- end of header -->
 <!-- end of header -->
 
@@ -149,18 +150,19 @@
                 <!-- Request Form -->
                 <div class="form-container">
                     <form method="post" action=".">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="rname" name="rname" required>
+                            <input type="text" class="form-control-input" id="rname" name="name" required>
                             <label class="label-control" for="rname">Full name</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control-input" id="remail" name="remail" required>
+                            <input type="email" class="form-control-input" id="remail" name="email" required>
                             <label class="label-control" for="remail">Email</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="rphone" name="rphone">
+                            <input type="text" class="form-control-input" id="rphone" name="phone">
                             <label class="label-control" for="rphone">Phone</label>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -211,7 +213,8 @@
                 <!-- Video Preview -->
                 <div class="image-container">
                     <div class="video-wrapper">
-                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=uNvs_QXe3SY&t=70s" data-effect="fadeIn">
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=uNvs_QXe3SY&t=70s"
+                            data-effect="fadeIn">
                             <img class="img-fluid" src="/static/images/video-frame.svg" alt="alternative">
                             <span class="video-play-button">
                                 <span></span>

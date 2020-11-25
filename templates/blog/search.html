@@ -29,28 +29,36 @@
                 <div class="col-xg-8 col-md-8 col-sm-12">
                     <div class="news_container">
                         {% for post in posts %}
-                        <!-- News Post -->
-                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-                            <div class="news_post_image">
-
-                                <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
-                                    class="rounded image-link" data-url="{{post.get_absolute_url}}" />
-                            </div>
-
-                            <div class="news_post_content text-left ml-1">
-                                <div class="news_post_title title-link">
-                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                        <div class="row m-1 py2">
+                            <div
+                                class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                <div class="news_post_image">
+                                    {% if post.thumbnail %}
+                                    <img src="{{post.thumbnail.url}}" alt="" height="150px" width="200px"
+                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                    {% else %}
+                                    <img src="/static/img/post.jpg" alt="" height="150px" width="200px"
+                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                    {% endif %}
                                 </div>
 
-                                <div class="news_post_text text-left">
-                                    <p>{{post.summary|safe}}</p>
-                                </div>
-                                <div class="button-group">
-                                    <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
-                                        More</a>
+                                <div
+                                    class="news_post_content text-left ml-md-2 pl-md-4 font-weight-bold text-capitalize">
+                                    <div class="news_post_title title-link">
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                    </div>
+
+                                    <div class="news_post_text text-left">
+                                        <p>{{post.summary|safe}}</p>
+                                    </div>
+                                    <div class="button-group">
+                                        <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
+                                            More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <hr>
 
                         {%empty%}
                         <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">

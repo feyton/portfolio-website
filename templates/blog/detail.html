@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
+{% load hitcount_tags %}
 {% load static %}
+
 
 
 <!-- Website Title -->
@@ -29,6 +31,8 @@
     {% endblock body %}
 
     {% block content %}
+    {% get_hit_count_js_variables for post as hitcount %}
+    {% get_hit_count for post as total_hits %}
 
     <!-- About -->
     <div id="about" class="basic-3 mt-4">
@@ -105,8 +109,7 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled stats">
-                                <li>Visits: <span id="post-visits"
-                                        data-url="{% url 'post-visit' pk=post.pk %}">{{post.visits}}</span>
+                                <li>Visits: <span id="post-visits" data-url="">{{ total_hits }}</span>
                                 </li>
 
                                 <li>Comments: <span>{{post.comments.count}}</span></li>
@@ -133,15 +136,17 @@
                         <div class="card-body">
                             <!-- start single post -->
                             {% for post in posts %}
-                            <div class="row border-bottom p-1 overflow-hidden">
+                            <div class="row p-1 overflow-hidden">
                                 <div class="col-sm-3 overflow-hidden ">
-                                    <img src="/static/img/post.jpg" alt="" height="50px" width="100%">
+                                    <img src="{{post.thumbnail.url}}" alt="" height="50px" width="100%"
+                                        class="img-fluid">
                                 </div>
                                 <div class="col-sm-9 ">
                                     <a href="{{post.get_absolute_url}}"
-                                        class="link link-move link-success bold v-center">{{post.title}}</a>
+                                        class="link link-move bold v-center text-capitalize">{{post.title}}</a>
                                 </div>
                             </div>
+                            <hr>
                             {% endfor %}
                             <!-- End single post -->
                         </div>
@@ -259,27 +264,25 @@
     </div> <!-- end of lightbox-basic -->
 
 
-    <script>
-        $(window).load(function (e) {
-            endpoint = $("#post-visit").data('url');
-            $.ajax({
-                url: endpoint,
-                method: 'GET',
-                success: function (data) {
-                    $("#post-visit").text(data.visits)
-                },
-                error: function (error_data) {
-                    console.log(error_data)
-                }
-            })
-        })
-
-    </script>
 
     {% endblock content %}
 
     {% block javascript %}
 
+    <script src="{% static 'hitcount/jquery.postcsrf.js' %}"></script>
 
+    {% get_hit_count_js_variables for post as hitcount %}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK: "{{ hitcount.pk }}" })
+                .done(function (data) {
+                    $('<i />').text(data.hit_counted).attr('id', 'hit-counted-value').appendTo('#hit-counted');
+                    $('#hit-response').text(data.hit_message);
+                }).fail(function (data) {
+                    console.log('POST failed');
+                    console.log(data);
+                });
+        });
+    </script>
 
     {% endblock javascript %}

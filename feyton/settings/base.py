@@ -1,6 +1,7 @@
 import os
-from django.contrib.messages import constants as messages
+
 from decouple import config
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(
@@ -21,9 +22,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.humanize',
+    'hitcount',
     'index',
     'blog',
     'user',
+    'widget_tweaks',
     # CK Editor
     'ckeditor',
     'ckeditor_uploader',
@@ -152,3 +155,6 @@ def ACCOUNT_USER_DISPLAY(user):
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+HITCOUNT_KEEP_HIT_ACTIVE = 2
+HITCOUNT_HITS_PER_IP_LIMIT = 10

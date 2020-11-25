@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load hitcount_tags %}
 
 {% block desc %}Blog
 {% endblock desc %}
@@ -111,42 +112,41 @@
             </div> <!-- end of row -->
             <div class="row ">
                 <div class="col-xg-8 col-md-8 col-sm-12">
-                    <div class="card overflow-scroll h-500">
-                        <div class="news_container">
-                            <!-- News Post -->
-                            {% for post in posts %}
-                            <div
-                                class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-                                <div class="news_post_image">
-                                    {% if post.thumbnail %}
-                                    <img src="{{post.thumbnail.url}}" alt="" height="200px" width="300px"
-                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
-                                    {% else %}
-                                    <img src="/static/img/post.jpg" alt="" height="200px" width="300px"
-                                        class="rounded image-link" data-url="{{post.get_absolute_url}}" />
-                                    {% endif %}
+
+                    <!-- News Post -->
+                    {% for post in posts %}
+                    <div class="row m-1 py2">
+                        <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <div class="news_post_image">
+                                {% if post.thumbnail %}
+                                <img src="{{post.thumbnail.url}}" alt="" height="150px" width="200px"
+                                    class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                {% else %}
+                                <img src="/static/img/post.jpg" alt="" height="150px" width="200px"
+                                    class="rounded image-link" data-url="{{post.get_absolute_url}}" />
+                                {% endif %}
+                            </div>
+
+                            <div class="news_post_content text-left ml-md-2 pl-md-4 font-weight-bold text-capitalize">
+                                <div class="news_post_title title-link">
+                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                 </div>
+                                <div class="pl-2"><i class="fas fa-eye"></i>&nbsp;{% get_hit_count for post %}&nbsp;|
+                                    <i class="fa fa-user"></i>
+                                    &nbsp;{{post.author.get_short_name|title}}</div>
 
-                                <div class="news_post_content text-left ml-1">
-                                    <div class="news_post_title title-link">
-                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
-                                    </div>
-
-                                    <div class="news_post_text text-left">
-                                        <p>{{post.summary|safe}}</p>
-                                    </div>
-                                    <div class="button-group">
-                                        <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
-                                            More</a>
-                                    </div>
+                                <div class="news_post_text text-left">
+                                    <p>{{post.summary|safe}}</p>
+                                </div>
+                                <div class="button-group">
+                                    <a href="{{post.get_absolute_url}}" class="btn btn-info pull-right btn-sm">Read
+                                        More</a>
                                 </div>
                             </div>
-                            {% endfor %}
-
-
-
                         </div>
                     </div>
+                    <hr>
+                    {% endfor %}
                 </div>
 
                 <!-- News Sidebar -->
