@@ -19,7 +19,7 @@
     <!-- title shown in the actual shared post -->
     <meta property="og:description" content="{% block summary %}Welcome to feyton Inc{% endblock summary %}" />
     <!-- description shown in the actual shared post -->
-    <meta property="og:image" content=" {% block image %}/static/img/favicon.png{% endblock image %}" />
+    {% block image %}<meta property="og:image" content="/static/img/favicon.png}" />{% endblock image %}
     <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="https://www.feyton.co.rw/blog/" /> <!-- where do you want your post to link to -->
     <meta property="og:type" content="post" />

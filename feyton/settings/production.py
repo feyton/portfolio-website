@@ -40,7 +40,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = '198.54.116.172'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'no-reply@feyton.co.rw'
-EMAIL_HOST_PASSWORD = 'admin@2020'
+EMAIL_HOST_PASSWORD = config('HOST_PASS', cast=str)
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
