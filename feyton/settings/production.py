@@ -16,7 +16,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/igityopp/feyton.co.rw/media'
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'igityopp_blog',
         'USER': 'igityopp_fahrer',
         'PASSWORD': config("DB_PASS"),
