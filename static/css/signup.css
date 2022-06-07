@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Josefin+Slab:wght@300;500;600&family=Lato&family=Lexend:wght@400;500&display=swap');
+
+:root {
+    --Josefin: "Josefin Slab", sans-serif;
+    --Lexend: 'Lexend', sans-serif;
+    --Lato: 'Lato', sans-serif;
+    --Abel: 'Abel', sans-serif;
+    --light-blue: rgba(33, 141, 241, 1);
+    --dark-blue: rgba(33, 141, 241, 0.31);
+    --dark-grey: rgba(35, 43, 51, 0.9);
+    --light-cyan: rgba(130, 180, 195, 1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.3s ease-in-out all;
+}
+
+/* Loader */
+.full-loader {
+    background-color: rgba(5, 15, 24, 0.932);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+.text-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* /// */
+
+
+
+/* Loader */
+
+.btn {
+    cursor: pointer !important;
+    transition: .3s all;
+}
+
+.btn:hover {
+    transform: scale(0.95);
+    transition: .3s all;
+}
+
+.bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7rem;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    padding: 2rem 3rem;
+    color: rgba(33, 141, 241, 1);
+    z-index: 10;
+    font-family: var(--Lexend);
+
+}
+
+.logo:hover {
+    color: white;
+    z-index: 10;
+}
+
+.text-box {
+    margin: auto;
+    box-shadow: 2px 2px 2px 2px rgb(150, 146, 146);
+    padding: 1rem 4rem;
+    background-color: rgba(43, 34, 34, 0.747);
+    color: white;
+    font-family: var(--Abel);
+    /* width: 100%; */
+}
+
+.sign-container {
+    margin: auto;
+    box-shadow: 2px 2px 2px 2px rgb(150, 146, 146);
+    padding: 1rem 4rem;
+    background-color: rgba(194, 173, 173, 0.233);
+    /* width: 100%; */
+}
+
+.sign-container h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: var(--Lexend);
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(61, 50, 50);
+}
+
+.sign-container form input {
+    padding: .5rem 1rem .5rem 2rem;
+    border-radius: 10px;
+    border: 2px solid blue;
+    background-color: rgba(219, 215, 215, 0.753);
+    margin: 5px;
+    font-family: var(--Lexend);
+    width: 100%;
+}
+
+.sign-container form input::placeholder {
+    font-family: var(--Lexend);
+    color: black;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.input-div {
+    position: relative;
+}
+
+.input-div i {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: green;
+
+}
+
+.input-div .message-div {
+    padding: 0rem 2rem;
+    color: rgb(39, 48, 47);
+    font-family: var(--Lexend);
+    display: none;
+}
+
+.input-div .message-div .valid {
+    color: green;
+}
+
+.input-div .message-div .invalid {
+    color: red;
+}
+
+.sign-container form button {
+    border: none;
+    text-transform: uppercase;
+    background-color: var(--light-blue);
+    color: white;
+    padding: .3rem 1rem;
+    border-radius: 5px;
+    font-family: var(--Lexend);
+}
+
+.sign-container form .links {
+    display: flex;
+    justify-content: flex-end;
+    font-family: var(--Lexend);
+    color: white;
+}
+
+form .social-login {
+    text-align: center;
+}
+
+form .social-login .social a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+form .social-login .social a {
+    font-size: .9rem;
+}
+
+form .social-login .social a {
+    padding: .5rem 2rem;
+    background-color: var(--dark-grey);
+    border-radius: 10px;
+    display: inline-block;
+    color: rgb(43, 211, 175);
+    font-family: var(--Lexend);
+    transition: .5s all;
+}
+
+form .social-login .social a:hover {
+    background-color: transparent;
+    border: 1px solid rgb(51, 17, 17);
+    color: black;
+    transition: .5s;
+}
+
+.or-div h3 {
+    display: inline-block;
+    margin-bottom: 10px;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.or-div h3:first-child {
+    width: 30%;
+    border-bottom: 3px solid black;
+}
+
+.or-div h3:last-child {
+    width: 30%;
+    border-bottom: 3px solid black;
+}
+
+.text-box h2 {
+    font-family: var(--Lexend);
+    color: white;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid grey;
+    text-align: left;
+}
+
+.text-box p {
+    font-weight: bolder;
+    font-size: 1.2rem;
+    padding: 1rem 0rem 1rem 2rem;
+}
+
+.text-box i {
+    color: green;
+}
+
+i.invalid {
+    color: red;
+}
+
+i.valid {
+    color: green;
+
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    padding: 10px 20px;
+    margin: 0 5px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+    font-family: var(--Lexend);
+    background-color: rgb(17, 73, 73);
+    color: white;
+}
+
+form input[type="file"] {
+    padding: 0px;
+    border: none;
+}
+
+@media screen and (max-width: 1020px) {
+    .sign-container {
+
+        padding: 1rem 2rem;
+
+        /* width: 100%; */
+    }
+
+}
+
+@media screen and (max-width: 1000px) {}
+
+@media screen and (max-width: 900px) {
+    .container {
+        gap: 2rem;
+    }
+
+    .sign-container {
+
+        padding: 1rem 2rem;
+
+        /* width: 100%; */
+    }
+
+    form .social-login .social a {
+        padding: .5rem 1rem;
+    }
+
+    .text-box {
+        padding: 1rem 1rem;
+    }
+
+}
+
+@media only screen and (max-width:720px) {
+
+    .text-box {
+        display: none;
+    }
+
+    .container {
+        display: flex;
+
+    }
+
+    .sign-container {
+        padding: 1rem 4rem;
+    }
+
+}
+
+@media only screen and (max-width:400px) {
+    .sign-container {
+        padding: 1rem 1rem;
+    }
+
+}

@@ -1,0 +1,220 @@
+.btn {
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    transition: .3s all ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+b {
+    font-family: var(--lexend);
+    font-weight: bold;
+}
+
+h2 {
+    pointer-events: none;
+}
+
+.post-actions i {
+    pointer-events: none;
+}
+
+.swal2-popup {
+    font-family: var(--Lexend);
+}
+
+.btn:hover {
+    transform: scale(0.95);
+    transition: .3s all ease-in-out;
+    color: var(--primary-color);
+}
+
+.center {
+    text-align: center;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.font-primary {
+    font-family: var(--Lexend);
+}
+
+/* LOADER */
+.loader-div {
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loader.standard {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 16px solid white;
+    border-bottom: 16px solid #267871;
+    border-top: 16px solid #267871;
+    animation: spin 2s linear infinite;
+
+}
+
+.juice {
+    display: none;
+}
+
+.loader-div .loader.progress .juice {
+    display: block;
+    height: 20px;
+    width: 0%;
+    animation: wave 3s linear infinite;
+}
+
+.loader-div .loader.progress .juice::after {
+    content: attr(data-percent);
+    align-items: right;
+    font-family: 'lexend';
+    color: white;
+    margin-left: 2px;
+}
+
+.loader.progress {
+    width: 300px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgb(255, 0, 0);
+    overflow: hidden;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wave {
+    0% {
+        background: #9CECFB;
+    }
+
+    20% {
+        background: #168497;
+    }
+
+    30% {
+        background: #066272;
+    }
+
+    30% {
+        background: #ad54e9;
+    }
+
+    40% {
+        background: #1757ac;
+    }
+
+    60% {
+        background: #461f66;
+    }
+
+    80% {
+        background: #1c3364;
+
+    }
+
+    100% {
+        background: #54cee4;
+
+    }
+}
+
+.logged-in {
+    display: none;
+}
+
+h3 {
+    font-family: "Lexend";
+    font-size: 1.2rem;
+}
+
+.pagination {
+    margin: 1rem auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+
+}
+
+.pagination span {
+    margin: 0rem .2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #218DF1;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    font-family: var(--Lexend);
+    cursor: pointer;
+    color: rgb(0, 12, 63);
+    font-weight: bold;
+    transition: .3s all;
+}
+
+.pagination span i {
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.pagination span.active {
+    background-color: rgb(34, 12, 12);
+    color: white;
+}
+
+.pagination span:hover {
+    transition: .3s all;
+    background-color: #1b2630;
+    color: white;
+}
+
+.tl {
+text-align: left;
+}

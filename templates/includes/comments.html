@@ -1,0 +1,20 @@
+{% load gravatar %}
+
+{% for comment in comments %}
+<li>
+    <div class="user-info-comment">
+        {% gravatar comment.email 40 %}
+        <span>{{ comment.name}}</span>
+    </div>
+    <p class="comment-content">{{comment.body}}</p>
+    <div class="comment-footer">
+        <span class="comment-date">{{comment.created_on|date:"d M Y"}}</span> <span><i
+                class="fas fa-star fa-lg like-comment" data-ref="{{comment.id}}"></i>&nbsp;{{comment.likes}}</span>
+    </div>
+
+    <hr>
+</li>
+
+{%empty%}
+<h3>Be the first to comment</h3>
+{% endfor %}

@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import View
 
+from blog.models import Category, Post
+
 from .forms import AssistanceRequestForm
 from .models import Member, Testimony
 
@@ -12,7 +14,9 @@ class HomeView(View):
         context = {
             'testimonies': Testimony.objects.filter(approved=True),
             'members': Member.objects.all(),
-            'form': form
+            'form': form,
+            'posts': Post.objects.filter(published=True).order_by('-published_date'),
+            'categories': Category.objects.all(),
         }
         return render(self.request, 'index.html', context)
 
@@ -38,3 +42,15 @@ def terms(request):
 
 def privacy(request):
     return render(request, 'pages/privacy-policy.html')
+
+
+def about(request):
+    return render(request, "pages/about.html")
+
+
+def work(request):
+    return render(request, "pages/work.html")
+
+
+def dashboard(request):
+    return render(request, "dashboard/index.html")

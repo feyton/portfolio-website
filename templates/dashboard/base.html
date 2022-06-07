@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+        | Dashboard</title>
+    <link rel="icon" href="/static/assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
+    <link rel="stylesheet" href="/static/css/util.css">
+    <link rel="stylesheet" href="/static/dashboard/main.css" class="css">
+    <meta name=”robots” content=”noindex,nofollow”>
+</head>
+
+<body>
+
+    {% block content %}
+    <main>
+        <div class="side-menu ">
+            <div class="menu-close">
+                <i class="fas fa-close"></i>
+            </div>
+            <div class="brand">
+                <h2 class="title" onclick="window.location.href='./dashboard.html'">FEYTON INC</h2>
+            </div>
+            <div class="side-menu-items">
+                <ul>
+                    <li class="menu-item active"><a href="./dashboard.html"><i
+                                class="fas fa-chalkboard fa-fw"></i>DASHBOARD</a></li>
+                    <li class="menu-item "><a href="./blog.html"><i class="fas fa-clipboard-list fa-fw"></i>BLOG</a>
+                    </li>
+                    <li class="menu-item "><a href="./query.html"><i class="far fa-comments fa-fw"></i>COMMENTS</a>
+                    </li>
+                    <li class="menu-item"><a href="./users.html"><i class="far fa-user fa-fw"></i>QUERIES</a></li>
+
+                </ul>
+            </div>
+            <div class="actions">
+                <h3>ACTIONS</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY SITE</a></li>
+                    <li><a href="../pages/profile.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY PROFILE</a>
+                    </li>
+                    <li class="logout user-logout logged-in"><i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;LOGOUT</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <nav>
+                <div class="menu-toggle mobile">
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+
+                </div>
+                <ul>
+                    <li>
+                        <form action="#search">
+                            <input type="text" placeholder="Search">
+                            <button class="search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="user">
+                        <img src="../assets/profile.JPG" class="profile-picture" alt="">
+                        <span>Fabrice</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="title-list">
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Suggested Actions</h4>
+                        </div>
+                        <div class="body">
+                            <div class="s-action"><a href="./create.html"><span>Create Post</span></a></div>
+                            <div class="s-action"><a href="./blog.html"><span>Approve comments</span></a></div>
+                            <div class="s-action"><a href="./query.html"><span>Clean up queries</span></a></div>
+                        </div>
+                    </div>
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Latest activities</h4>
+                        </div>
+                        <div class="body latest-bubble-actions">
+
+                            <div class="s-action"><span>Approved 2 comments</span></div>
+                            <div class="s-action"><span>Added new query</span></div>
+
+                        </div>
+                    </div>
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Recent searches</h4>
+                        </div>
+                        <div class="body" id="latest-search-div">
+                        </div>
+                    </div>
+                </div>
+                <div class="main-dashboard">
+                    <div class="task">
+                        <h2>Tasks</h2>
+                        <div class="task-addition">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <div class="task-list">
+
+                            <div class="center title">
+                                <br><br>
+                                <i class="fa fa-spinner fa-spin fa-lg"></i>
+                                <br><br>
+                                <h2 class="font-primary">No tasks available for now</h2>
+                                <br><br>
+                            </div>
+                            <hr>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="latest-actions">
+                        <h2>Your Latest Actions</h2>
+                        <div class="action-list" id="actions-list">
+                            <div class="action-title">
+                                <span>Time</span>
+                                <span>Action</span>
+                                <span>Method</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    {% endblock content %}
+
+
+
+
+{% block modal %}
+    
+{% endblock modal %}
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/static/dashboard/dashboard.js" type="module" defer></script>
+</body>
+
+</html>

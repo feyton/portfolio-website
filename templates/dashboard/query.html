@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Queries</title>
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="main.css" class="css">
+    <meta name=”robots” content=”noindex,nofollow”>
+</head>
+
+<body>
+    <div class="add-blog">
+        <a href="create.html"><i class="fas fa-plus"></i></a>
+
+    </div>
+    <main>
+        <div class="side-menu ">
+            <div class="menu-close">
+                <i class="fas fa-close"></i>
+            </div>
+            <div class="brand">
+                <h2 class="title" onclick="window.location.href='./dashboard.html'">FEYTON INC</h2>
+            </div>
+            <div class="side-menu-items">
+                <ul>
+                    <li class="menu-item "><a href="./dashboard.html"><i
+                                class="fas fa-chalkboard fa-fw"></i>DASHBOARD</a></li>
+                    <li class="menu-item"><a href="./blog.html"><i class="fas fa-clipboard-list fa-fw"></i>BLOG</a></li>
+                    <li class="menu-item active"><a href="./query.html"><i
+                                class="far fa-comments fa-fw"></i>COMMENTS</a>
+                    </li>
+                    <li class="menu-item"><a href="./users.html"><i class="far fa-user fa-fw"></i>USERS</a></li>
+
+                </ul>
+            </div>
+            <div class="actions">
+                <h3>ACTIONS</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY SITE</a></li>
+                    <li><a href="../pages/profile.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY PROFILE</a>
+                    </li>
+                    <li class="logout"><i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;LOGOUT</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <nav>
+                <div class="menu-toggle mobile">
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+
+                </div>
+                <ul>
+                    <li>
+                        <form action="#search">
+                            <input type="text" placeholder="Search">
+                            <button class="search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="user">
+                        <img src="" class="profile-picture" alt="">
+                        <span class="user-name">Fabrice</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="blog-view">
+                <div class="title-div">
+                    <h2>Comments management</h2>
+                </div>
+                <div class="blog-list">
+                    <div class="list-head">
+                        <div>Select</div>
+                        <div>Status</div>
+                        <div>Message</div>
+                        <div>Author</div>
+                        <div>Actions</div>
+
+                    </div>
+                    <div class="list-items">
+                        <div class="item">
+                            <div class="checkbox">
+                                <input type="checkbox" name="checkbox">
+                            </div>
+                            <div class="star">
+                                <span class="true">True</span>
+                            </div>
+                            <div class="post-title">
+                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sunt saepe ex
+                                    magni, assumenda ea obcaecati temporibus facilis quis dicta nihil a, accusamus at
+                                    iste doloribus cumque tempore rerum repellat.</h6>
+                            </div>
+                            <div class="post-date">
+                                <span>Fahrer</span>
+                            </div>
+                            <div class="post-actions">
+                                <a href="#kd"><i class="fas fa-eye"></i></a>
+                                <a href="#kd"><i class="fas fa-edit"></i></a>
+                                <a href="#kd" class="confirm"><i class="fas fa-trash"></i></a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="list-actions">
+                        <form action="">
+                            <div class="select-action">
+
+
+                                <label for="list-options">Choose what to do with selected comments:</label>
+                                <select name="option" id="list-options">
+                                    <option value=""></option>
+                                    <option value="delete">Delete</option>
+                                    <option value="archive">Archive</option>
+
+                                </select>
+                                <button>GO</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleMenu() {
+            let menuOpen = true;
+            document.querySelector(".menu-close").addEventListener('click', () => {
+                if (menuOpen) {
+
+
+                    console.log('Menu hidden');
+                    menuOpen = false;
+                    document.querySelector(".side-menu").style.display = "none"
+                    document.querySelector(".menu-toggle").style.display = "flex";
+                    document.querySelector('main').style.gridTemplateColumns = "1fr"
+                }
+            });
+            document.querySelector(".menu-toggle").addEventListener('click', () => {
+                if (!menuOpen) {
+
+                    console.log('Menu open');
+                    menuOpen = true;
+                    document.querySelector(".side-menu").style.display = 'block'
+                    document.querySelector(".menu-toggle").style.display = "none"
+                    document.querySelector('main').style.gridTemplateColumns = "2fr 8fr"
+                };
+            })
+        }
+        toggleMenu()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Create</title>
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
+    <link rel="stylesheet" href="../css/util.css" class="css">
+    <link rel="stylesheet" href="main.css" class="css">
+    <script src='https://cdn.tiny.cloud/1/xyeau33pff3iqnbpm6awb9rz6y6mrvid09r36yumi28g026m/tinymce/5/tinymce.min.js'
+        referrerpolicy="origin">
+        </script>
+        <meta name=”robots” content=”noindex,nofollow”>
+</head>
+
+<body>
+
+    <main>
+        <div class="side-menu ">
+            <div class="menu-close">
+                <i class="fas fa-close"></i>
+            </div>
+            <div class="brand">
+                <h2 class="title" onclick="window.location.href='./dashboard.html'">FEYTON INC</h2>
+            </div>
+            <div class="side-menu-items">
+                <ul>
+                    <li class="menu-item "><a href="./dashboard.html"><i
+                                class="fas fa-chalkboard fa-fw"></i>DASHBOARD</a></li>
+                    <li class="menu-item active"><a href="./blog.html"><i
+                                class="fas fa-clipboard-list fa-fw"></i>BLOG</a></li>
+                    <li class="menu-item"><a href="#"><i class="far fa-comments fa-fw"></i>QUERIES</a></li>
+                    <li class="menu-item"><a href="#"><i class="far fa-user fa-fw"></i>USERS</a></li>
+                    <!-- <li class="menu-item">PROFILE</li> -->
+                    <!-- <li class="menu-item"></li> -->
+                </ul>
+            </div>
+            <div class="actions">
+                <h3>ACTIONS</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY SITE</a></li>
+                    <li class="logout"><i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;LOGOUT</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <nav>
+                <div class="menu-toggle mobile">
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+
+                </div>
+                <ul>
+                    <li>
+                        <form action="#search">
+                            <input type="text" placeholder="Search">
+                            <button class="search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="user">
+                        <img src="./download.png" class="profile-picture" alt="">
+                        <span>Fabrice</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="title-div">
+                    <h2>Add Blog</h2>
+                </div>
+                <div class="form-div">
+                    <div class="add-card">
+                        <form action="#none" id="post-edit-form" method="POST" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <label for="title">Post Title</label>
+                                <input type="text" placeholder="title" name="title" id="title" class="w-100" required
+                                    autocomplete="false">
+                            </div>
+                            <div class="input-group">
+                                <label for="title">Post Summary</label>
+                                <textarea name="summary" id="post-summary" cols="30" rows="4" required
+                                    maxlength="300"></textarea>
+                            </div>
+                            <div class="input-group custom-select-input">
+                                <label for="category">Choose a category</label>
+                                <select name="category" id="category" required>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Tutorials">Tutorials</option>
+                                    <option value="Story">Story</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group editor-section">
+                                <label for="post-content">Add content here</label>
+                                <hr>
+                                <textarea name="content" id="post-content" cols="30" rows="10"
+                                    class="post-content-create"></textarea>
+                            </div>
+                            <div class="input-group custom-select-input">
+                                <label for="status">Save as:</label>
+                                <select name="published" id="status" required>
+                                    <option value="true">Published</option>
+                                    <option value="false">Draft</option>
+                                </select>
+                            </div>
+                            <input type="submit" value="Create" class="btn btn-submit">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="loader-div">
+        <div class="loader progress">
+            <div class="juice" data-percent=0%></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../js/main.js" type="module" defer></script>
+    <script src="./dashboard.js" type="module" defer></script>
+    <script src="./edit.js" type="module" defer></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

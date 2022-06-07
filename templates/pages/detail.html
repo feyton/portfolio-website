@@ -1,0 +1,109 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/detail.css" class="css">
+{% endblock extra_css %}
+
+{% block title %}
+{{post.title}}
+{% endblock title %}
+
+
+
+
+{% block meta %}
+<meta name="description"
+    content="The andela technical leadership program inspire this work and their guidance made it possible. Welcome to my brand website. Read and share.">
+<meta property="og:url" content="https://feyton.github.io/" />
+<meta property="og:title" content="ATLP Fabrice" />
+<meta name="author" content="Fabrice H.">
+<meta property="og:image"
+    content="https://res.cloudinary.com/feyton/image/upload/v1643729739/ohi9xpikdivuex22ep6m.jpg" />
+<meta property="og:image:alt" content="ATLP Capstone Project" />
+{% endblock meta %}
+
+
+{% block content %}
+<div class="trending-blogs">
+    <div class="blog-section">
+        <section class="blog-list">
+            <!-- Blog -->
+            <div class="blog-card " id="blog-div">
+                <div class="blog-image">
+                    <img src="{{post.imgUrl}}" alt="">
+                    <div class="date-info">
+                        <h2>{{post.created_on| date:"d-M"}}</h2>
+                        <hr>
+                        <h2>{{post.created_on| date:"Y"}}</h2>
+                    </div>
+                </div>
+                <div class="blog-info">
+                    <h2>{{post.title}}</h2>
+                    <div class="blog-detail-content">
+                        {{post.content|safe}}
+                    </div>
+
+                </div>
+                <br>
+
+
+            </div>
+            <hr>
+            <div class="comments">
+                <h3>Add a comment</h3>
+                <div class="comment-form">
+                    <form action="#comment" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="name" required placeholder="Your name">
+                        <input type="email" name="email" id="" required placeholder="Your email">
+                        <textarea name="body" id="comment-body" cols="30" rows="3" placeholder="Type your comment here"
+                            required minlength="10" maxlength="200"></textarea>
+                        <input type="submit" value="Comment">
+                    </form>
+                </div>
+            </div>
+            <div class="comment-list">
+                <h2>Comments</h2>
+                <div class="comment-div">
+                    <ul id="comment-div">
+                        {% include "../includes/comments.html" with comments=post.comments.all %}
+
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+        <aside class="sidebar">
+            <div class="author author-card" id="author-div">
+                <div class="author-avatar"><img src="{{post.author.profile.imgUrl}}" alt=""></div>
+
+
+                <h2>{{post.author.first_name}}</h2>
+                <p>{{post.author.profile.biography}}</p>
+                <button class="coffee">
+                    <span>Follow</span><span><a href="https://fb.me/{{post.author.profile.facebook_username}}"
+                            target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a><a
+                            href="https://twitter.com/{{post.author.profile.twitter_username}}" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></span>
+                </button>
+
+            </div>
+
+            {% include "../includes/categories.html" with categories=categories %}
+
+            <h1 class="newsletter">Newsletter</h1>
+            <form action="#none">
+                <input type="email" name="email" placeholder="E-mail">
+                <button>Join</button>
+            </form>
+
+        </aside>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+{% block extra_js %}
+<script src="/static/js/detail.js" type="module" defer></script>
+{% endblock extra_js %}
