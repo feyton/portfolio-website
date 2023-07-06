@@ -12,11 +12,10 @@ class BlogListView(View):
     def get(self, *args, **kwargs):
         context = {
             'posts': Post.objects.filter(published=True).order_by('-published_date'),
-            'tags': Tag.objects.all,
             'categories': Category.objects.all(),
             'tags': Tag.objects.all()
         }
-        return render(self.request, 'blog/blog.html', context)
+        return render(self.request, 'pages/blog.html', context)
 
 
 list_view = BlogListView.as_view()
@@ -42,9 +41,9 @@ def post_view(request, pk, title):
             n = {'new_comment': comment}
             context.update(n)
             messages.success(request, 'Thank you for the comment')
-            return render(request, 'blog/detail.html', context)
+            return render(request, 'pages/detail.html', context)
         messages.error(request, 'Error in form')
-        return render(request, 'blog/detail.html', context)
+        return render(request, 'pages/detail.html', context)
 
     context = {
         'form': CommentForm(),
@@ -54,11 +53,11 @@ def post_view(request, pk, title):
         'posts': posts
     }
 
-    return render(request, 'blog/detail.html', context)
+    return render(request, 'pages/detail.html', context)
 
 
 class DetailView(DetailView):
-    template_name = 'blog/detail.html'
+    template_name = 'pages/detail.html'
     model = Post
     context_object_name = 'post'
 
@@ -72,7 +71,7 @@ def category_view(request, pk, *args, **kwargs):
         'categories': Category.objects.all(),
         'tags': Tag.objects.all()
     }
-    return render(request, 'blog/categories.html', context)
+    return render(request, 'pages/categories.html', context)
 
 
 def tag_view(request, pk, *args, **kwargs):
@@ -83,7 +82,7 @@ def tag_view(request, pk, *args, **kwargs):
                'tag': tag,
                'tags': Tag.objects.all(),
                'categories': cats}
-    return render(request, 'blog/tag.html', context)
+    return render(request, 'pages/tag.html', context)
 
 
 def search(request, *args, **kwargs):
@@ -108,7 +107,7 @@ def search(request, *args, **kwargs):
     else:
         term = SearchTerms(term=query)
         term.save()
-    return render(request, 'blog/search.html', context)
+    return render(request, 'pages/search.html', context)
 
 
 def register_hit(request, pk):

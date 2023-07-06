@@ -1,19 +1,12 @@
-{% extends 'base.html' %}
+{% extends '../base.html' %}
+{% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/work.css" class="css">
+{% endblock extra_css %}
 
 
 {% block content %}
-
-
-<div class="hero">
-    <div class="hero-text">
-        <h3>Your Dream</h3>
-        <h2>Made a reality</h2>
-    </div>
-
-    <button class="btn-explore all-caps" onclick="window.location.href='#our-work'">Explore</button>
-</div>
-
 <div class="services">
     <h2>Our Services</h2>
     <p>We are here to make your ideas come to life.</p>
@@ -52,30 +45,6 @@
         </div>
     </div>
 </div>
-
-<div class="trending-blogs">
-    <h2 class="head-title">Trending Posts</h2>
-    <div class="blog-section">
-        {% include "includes/posts.html" with posts=posts %}
-        <aside class="sidebar">
-            <h1>Recent Tweets</h1>
-            <div class="twiter-feed">
-                <a class="twitter-timeline" data-lang="en" href="https://twitter.com/feytonf?ref_src=twsrc%5Etfw">Tweets
-                    by feytonf</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-            </div>
-            {% include 'includes/categories.html' with categories=categories %}
-            <h1 class="newsletter">Newsletter</h1>
-            <form action="#none">
-                <input type="email" name="email" placeholder="E-mail">
-                <button>Join</button>
-            </form>
-
-        </aside>
-    </div>
-</div>
-
 <div class="our-work" id="our-work">
 
     <h2>Our recent work</h2>
@@ -90,7 +59,7 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
@@ -101,7 +70,7 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
@@ -112,7 +81,7 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
@@ -126,7 +95,7 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
@@ -137,7 +106,7 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
@@ -148,43 +117,102 @@
                 <div class="info">
                     <p>Designed and deployed Ticketing system</p>
                     <h6>Isaniro Corp</h6>
-                    <button>Read more</button>
+                    <button data-target="project-details" class="modal-view">Read more</button>
                 </div>
             </div>
             <!-- End card -->
         </div>
     </div>
-    <a href="./pages/work.html" class="btn btn-primary">EXPLORE MORE</a>
 </div>
+<div class="testimonials">
+    <h2>Testimonials</h2>
+    <p>Learn what our clients said about us</p>
+    <div class="testimonial-list">
+        <!-- <div class="left-arrow"><i class="fas fa-chevron-left fa-lg"></i></div>
+                <div class="right-arrow"><i class="fas fa-chevron-right fa-lg"></i></div> -->
 
 
-<div class="request">
-    <h2>Request a quotation today</h2>
-    <div class="request-div">
-        <div class="info-card">
-            <h3>Our Values</h3>
-            <p>We are here to serve our customers and visitors</p>
-            <ul>
-                <li><i class="fa fa-check" aria-hidden="true"></i>Responsibility</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>Integrity</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>Collaboration</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>Team work</li>
 
-            </ul>
+        <!-- Testimonial Card -->
+        <div class="card testimonial-card">
+            <div class="img-group">
+                <img src="../assets/profile.JPG" alt="">
+
+            </div>
+            <h4>Fredinand</h4>
+            <span>CEO, <b>Isaniro Corp</b></span>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum fugiat laudantium dolor
+                officiis,
+                ex error nulla mollitia?</p>
         </div>
-        <div class="form-card">
+        <!-- /////////// -->
+        <!-- Testimonial Card -->
+        <div class="card testimonial-card">
+            <div class="img-group">
+                <img src="../assets/profile.JPG" alt="">
 
-            <form action="#request">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="E-mail" required>
-                <textarea name="message" placeholder="Message" required rows="5"></textarea>
-                <p>By submitting this form, you agree with our terms and privacy policy.</p>
-                <input type="submit" value="Send">
-
-            </form>
+            </div>
+            <h4>Fredinand</h4>
+            <span>CEO, <b>Isaniro Corp</b></span>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum fugiat laudantium dolor
+                officiis,
+                ex error nulla mollitia?</p>
         </div>
+        <!-- /////////// -->
     </div>
 
-</div>
 
+
+</div>
 {% endblock content %}
+{% block modal %}
+<div class="modal modal-lg" modal-id="project-details" id="project-details">
+    <div class="close-button"><i class="far fa-window-close fa-lg"></i></div>
+    <div class="project-content">
+        <i class="fas fa-spinner fa-spin"></i>
+        <div class="project-div">
+            <div class="info">
+                <div class="project-title">
+                    <h2>Blogging Website Design</h2>
+                </div>
+                <hr>
+                <div class="client">
+                    <h3>Client: <b>Isaniro Corp</b></h3>
+                </div>
+                <div class="description">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam minima cupiditate
+                        rerum
+                        quaerat illo cumque unde sed facere nesciunt vitae optio, corrupti illum. Velit
+                        reprehenderit, excepturi laudantium magni vero in.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, vero quam natus sequi
+                        nobis
+                        non dolorem? Ex, quidem? Fugiat beatae sapiente voluptate aut esse. Dolorem nihil
+                        accusantium neque iure aperiam.</p>
+                </div>
+
+                <div class="date">
+                    <span>Date: <b>25 June 2021</b></span>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary ">VISIT</button>
+                    <button class="btn btn-primary ">SHARE</button>
+                </div>
+
+
+            </div>
+            <div class="gallery">
+                <h2 class="title">Gallery</h2>
+                <hr>
+                <img src="../assets/blog3.png" alt="">
+                <img src="../assets/blog3.png" alt="">
+                <img src="../assets/blog3.png" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock modal %}
+
+{% block extra_js %}
+<script src="/static/js/work.js" type="module"></script>
+{% endblock extra_js %}

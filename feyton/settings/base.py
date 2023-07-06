@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_gravatar'
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,4 @@ MESSAGE_TAGS = {
 
 HITCOUNT_KEEP_HIT_ACTIVE = 2
 HITCOUNT_HITS_PER_IP_LIMIT = 10
+GRAVATAR_DEFAULT_IMAGE = "https://res.cloudinary.com/feyton/image/upload/v1653155678/zpvyjo3vpemjrjwikcyc.jpg"

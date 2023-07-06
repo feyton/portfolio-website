@@ -1,0 +1,10 @@
+<div class="categories">
+    <h1 class="center">Categories</h1>
+
+    {% for cat in categories %}
+    <div class="category color-gradient">
+        <span>{{cat.title}}</span><span>({{cat.posts.count}})</span>
+    </div>
+    {% endfor %}
+
+</div>

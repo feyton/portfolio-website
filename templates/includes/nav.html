@@ -1,0 +1,51 @@
+{% load static %}
+
+<header>
+
+    <nav class="">
+        <div class="brand">
+            <a href="{% url 'home'%}">
+                <h3>Feyton Inc</h3>
+            </a>
+        </div>
+        <div class="menu-toggle mobile">
+            <div class="toggle"><i class="fa fa-bars"></i></div>
+        </div>
+        <div class="menu flex-row menu-displayed">
+            <ul class="menu-items flex-row">
+
+                <li class="menu-item active menu-home"><a href="{% url 'home'%}" class="">Home</a></li>
+                <li class="menu-item"><a href="{% url 'blog'%}">Blog</a></li>
+                <li class="menu-item"><a href="{% url 'work'%}">Our Work</a></li>
+                <li class="menu-item"><a href="{% url 'about'%}">About Me</a></li>
+
+                {% if request.user.is_authenticated %}
+                <li class="menu-item profile-img "><a href="#here"><img src="{{request.user.profile.imgUrl}}" alt=""
+                            class="profile-picture"><i class="fa fa-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{% url 'profile_view'%}">Profile</a></li>
+                        <li class="admin"><a href="{% url 'dashboard'%}">Dashboard</a></li>
+                        <li><a href="{% url 'account_logout'%}" class="logout">Logout</a></li>
+                    </ul>
+
+                </li>
+                {% else %}
+                <li class="menu-item profile-img "><a href="#here"><img src="/static/assets/profile_avatar.svg" alt=""
+                            class="picture-avatar"><i class="fa fa-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#login" class="modal-link" target="login-modal">Login</a></li>
+                        <li><a href="{% url 'account_signup'%}">Signup</a></li>
+                    </ul>
+
+                </li>
+
+                {% endif %}
+
+
+
+            </ul>
+        </div>
+
+    </nav>
+
+</header>

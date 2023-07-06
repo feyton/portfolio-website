@@ -1,0 +1,33 @@
+<section class="blog-list" id="blog-list">
+
+
+    {% for post in posts %}
+    <div class="blog-card">
+        <div class="blog-image">
+            <img src="{{post.imgUrl}}" alt="">
+            <div class="date-info">
+                <h2>{{post.created_on| date:"d-M"}}</h2>
+                <hr>
+                <h2>{{post.created_on| date:"Y"}}</h2>
+            </div>
+        </div>
+        <div class="blog-info">
+            <a href="{{post.get_absolute_url}}" class="title btn-more">
+                <h2>{{post.title}}</h2>
+            </a>
+            <p>{{post.summary|safe}}</p><br>
+            <a href="{{post.get_absolute_url}}" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
+                    aria-hidden="true"></i></a><br>
+        </div>
+        <br>
+    </div>
+    <hr>
+
+    {% empty%}
+    <div class="blog-info">
+        <h2 class="center font-primary">No Posts yet</h2>
+    </div>
+    <br>
+    {% endfor %}
+
+</section>
