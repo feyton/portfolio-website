@@ -1,0 +1,975 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Josefin+Slab:wght@300;500;600&family=Lato&family=Lexend:wght@400;500&display=swap');
+
+:root {
+    --Josefin: "Josefin Slab", sans-serif;
+    --Lexend: 'Lexend', sans-serif;
+    --Lato: 'Lato', sans-serif;
+    --Abel: 'Abel', sans-serif;
+    --light-blue: rgba(33, 141, 241, 1);
+    --dark-blue: rgba(33, 141, 241, 0.31);
+    --dark-grey: rgba(35, 43, 51, 0.986);
+    --light-cyan: rgba(130, 180, 195, 1);
+}
+
+
+:root {
+    --primary-color: #218DF1;
+    --secondary-color: #404756;
+    --tertiary-color: #A4ABBD;
+    --head-font: "Lexend";
+    --p-font: 'Josefin';
+    --title-font: 'Livvic'
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+ul {
+    list-style: none;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #A4ABBD;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 2fr 8fr;
+    height: 100vh;
+    width: 100%;
+
+
+}
+
+main .side-menu {
+    background-color: var(--secondary-color);
+    height: 100vh;
+}
+
+main .dashboard {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: relative;
+    overflow: scroll;
+}
+
+main .dashboard nav {
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+}
+
+main .dashboard nav img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+}
+
+main .dashboard nav ul {
+    display: flex;
+    flex-direction: row;
+    padding-right: 2rem;
+
+}
+
+.title {
+    font-family: var(--head-font);
+}
+
+main .dashboard nav ul li {
+    padding-right: 2rem;
+}
+
+main .dashboard nav ul form {
+    position: relative;
+    padding: .5rem 1rem 0.5rem 1rem;
+}
+
+main .dashboard nav ul form input[type="text"] {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #b6bebe8e;
+    width: 100%;
+    font-family: var(--head-font);
+}
+
+main .dashboard nav ul form input[type="text"]:focus {
+    border: none;
+    background-color: #fff;
+    outline: none;
+}
+
+main .dashboard nav ul form input[type="text"]::placeholder {
+    font-family: var(--head-font);
+    text-transform: capitalize;
+    color: var(--secondary-color);
+    font-weight: bolder;
+    margin-left: 2rem;
+}
+
+main .dashboard nav ul form button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: .5rem 1rem 0.5rem 1rem;
+    padding: 10px;
+    border-radius: 0px 30px 30px 0px;
+}
+
+main .dashboard nav ul .user {
+    padding: .5rem 1rem 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .dashboard nav ul .user span {
+    padding-left: .5rem;
+    font-family: var(--head-font);
+    color: white;
+    font-weight: bolder;
+}
+
+main .dashboard nav .menu-toggle {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    padding-left: .2rem;
+    transform: scale(1.4);
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+
+}
+
+main .side-menu {
+    position: relative;
+    padding: 2rem;
+    /* display: block; */
+
+}
+
+main .side-menu .menu-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-top: 1rem;
+    transform: scale(1.6);
+    padding-right: 1rem;
+    color: white;
+}
+
+main .side-menu.menu-hide {
+    display: none;
+}
+
+main .side-menu .brand {
+    color: var(--primary-color);
+    text-align: center;
+    padding-bottom: 2rem;
+    cursor: pointer;
+}
+
+main .side-menu .side-menu-items {
+    padding: 2rem 0rem;
+}
+
+main .side-menu .side-menu-items ul li {
+    margin: 10px;
+    background-color: #fff;
+    padding: 10px;
+    /* text-align: center; */
+    font-family: var(--head-font);
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #fff;
+}
+
+main .side-menu .side-menu-items ul li.active {
+    box-shadow: 2px 2px 4px rgb(223, 223, 223);
+    background-color: var(--primary-color);
+    transform: translateX(20%);
+}
+
+main .side-menu .side-menu-items ul li.active a {
+    color: white;
+    font-weight: 400;
+}
+
+main .side-menu .side-menu-items ul li.active a i {
+    color: white;
+}
+
+main .side-menu .side-menu-items ul li a {
+    color: var(--dark-grey);
+}
+
+main .side-menu .side-menu-items ul li a i {
+    margin-right: 1rem;
+    /* font-size: 1rem; */
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+
+main .side-menu .actions {
+    padding: 2rem 1rem;
+
+}
+
+main .side-menu .actions .logout {
+    color: rgb(94, 4, 4);
+}
+
+main .side-menu .actions h3 {
+    color: var(--tertiary-color);
+    font-family: var(--Josefin);
+    border-bottom: 1px solid grey;
+}
+
+main .side-menu .actions ul {
+    padding-left: 1rem;
+}
+
+main .side-menu .actions ul li {
+    padding: .5rem 0rem;
+    font-family: var(--head-font);
+    color: white;
+}
+
+main .side-menu .actions ul li a {
+    color: white;
+
+}
+
+main .dashboard .content {
+    width: 100%;
+    height: 100%;
+}
+
+
+body .add-blog {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    z-index: 10;
+    background-color: var(--secondary-color);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+}
+
+body .add-blog i {
+    color: white;
+}
+
+main .content form input, main .content form textarea {
+    display: block;
+    background-color: rgb(226, 222, 222);
+    padding: .5rem 1rem;
+    font-family: var(--head-font);
+
+}
+
+main .content form label {
+    font-family: var(--head-font);
+    margin: 5px 0px;
+    display: block;
+}
+
+main .form-div {
+    padding: 2rem;
+    width: 100%;
+}
+
+main .content {
+    padding-top: 8vh;
+    margin-top: 0;
+}
+
+main .content .title-div {
+    text-align: center;
+    font-family: var(--head-font);
+}
+
+main .content form {
+    width: 100%;
+}
+
+main .content form input[type='submit'] {
+    margin: 10px 0px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bolder;
+}
+
+main .content form input[type='text'] {
+    width: 60%;
+    border-radius: 10px;
+}
+
+main .content form input[type='text']::placeholder {
+    text-transform: capitalize;
+    color: rgb(54, 41, 41);
+}
+
+main .content form textarea {
+    width: 80%;
+    border-radius: 10px;
+}
+
+main .content form select {
+    background-color: rgb(184, 179, 179);
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    font-family: var(--head-font);
+}
+
+main .content form select option {
+    background-color: var(--primary-color);
+}
+
+main .content form input[type='file'] {
+    padding: 0px;
+    background-color: rgb(48, 80, 99);
+    color: white;
+    border-radius: 10px;
+    border: 0;
+}
+
+main .content form input[type='file']::-webkit-file-upload-button {
+    padding: .5rem 1rem;
+    margin: 0;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+    margin-right: 10px;
+    font-family: var(--head-font);
+
+}
+
+main .blog-view {
+    width: 100%;
+    padding-top: 8vh;
+}
+
+main .blog-list {
+    display: block;
+    padding: 1rem;
+
+}
+
+main .blog-list .list-items {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+main .blog-list .list-head, main .blog-list .list-items .item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr 2fr 2fr;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    font-family: var(--head-font);
+}
+
+main .blog-list .true {
+    font-weight: bold;
+    color: #00865a;
+}
+
+main .blog-list .true::before {
+    content: "\f560";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 3px;
+    color: green;
+}
+
+main .blog-list .false {
+    font-weight: bold;
+    color: #012049;
+}
+
+main .blog-list .false::before {
+    content: "\f28d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 3px;
+    color: red;
+}
+
+main .blog-list .list-head {
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+main .blog-list .list-items .item {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+main .blog-list .list-items .item .post-title {
+    text-align: left !important;
+}
+
+main .blog-list .list-items .item .star i {
+    color: rgb(0, 48, 87);
+    /* border: 2px solid yellow; */
+    cursor: pointer;
+    transform: scale(1.4);
+}
+
+h6 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+main .blog-list .list-items .item .post-actions, .user-list .user-actions {
+    text-align: center;
+}
+
+main .blog-list .list-items .item .post-actions i, .user-list .user-actions i {
+    padding: 0rem .4rem;
+}
+
+main .blog-list select, main .blog-list label, .user-list label {
+    /* display: block; */
+    margin-top: 1rem;
+    font-family: var(--head-font);
+    padding: .5rem 1rem;
+}
+
+main .blog-list select, .user-list select {
+    background-color: rgb(150, 149, 149);
+    margin-left: 1rem;
+    padding: .3rem 2rem;
+    color: rgb(17, 17, 17);
+    font-family: var(--head-font);
+}
+
+main .blog-list button {
+    padding: .3rem 1rem;
+    background-color: var(--primary-color);
+    font-family: var(--head-font);
+    font-weight: bolder;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+main .blog-list .list-items .item .checkbox {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em rgb(54, 204, 66);
+    transform-origin: bottom left;
+    clip-path: polygon(36% 60%, 100% 2%, 39% 88%, 0 45%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1.6);
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+.blog-view .title-div {
+    text-align: center;
+    font-family: var(--head-font);
+    font-weight: bolder;
+}
+
+.dashboard .content .title-list {
+    background-color: var(--dark-grey);
+    padding: 10px;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .content .title-list .card {
+    background-color: #fff;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 2px 4px 2px 2px grey;
+    font-family: var(--head-font);
+    text-align: center;
+}
+
+.dashboard .content .title-list .card .header {
+    border-bottom: 1px solid grey;
+}
+
+.dashboard .content .title-list .card .body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.dashboard .content .title-list .card .body .s-action {
+    padding: .2rem .5rem;
+    border-radius: 20px;
+    background-color: rgb(3, 73, 52);
+    color: white;
+    font-size: .7rem;
+    margin: .3rem;
+    cursor: pointer;
+    text-align: center;
+}
+.dashboard .content .title-list .card .body .s-action a {
+    color: white;
+}
+.latest-bubble-actions .s-action span {
+    cursor: not-allowed;
+}
+.latest-bubble-actions .s-action.delete {
+    background-color: rgb(129, 31, 31);
+    color: wheat;
+}
+.latest-bubble-actions .s-action.create {
+    background-color: rgb(51, 139, 10);
+}
+
+.main-dashboard {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    grid-template-columns: 3fr 3fr;
+    font-family: var(--head-font);
+    min-height: 100%;
+}
+
+.main-dashboard .task {
+    box-shadow: -2px 2px 4px 2px grey;
+    border-radius: 10px;
+}
+
+.main-dashboard h2 {
+    padding: .5rem 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.main-dashboard .latest-actions {
+    box-shadow: 2px 2px 2px 2px grey;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+}
+
+.main-dashboard .latest-actions .action-title, .main-dashboard .latest-actions .action-item {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    gap: 5px;
+    border-bottom: 1px solid grey;
+    align-items: center;
+    font-size: .9rem;
+}
+
+.main-dashboard .latest-actions .action-title {
+    font-weight: bold;
+}
+
+.main-dashboard .latest-actions .action-item span {
+    padding: .2rem;
+}
+
+/* Blog Style */
+
+.post-actions a:last-child {
+    color: rgb(128, 0, 0);
+}
+
+.post-actions a:first-child {
+    color: rgb(0, 87, 128);
+}
+
+.post-actions a:nth-child(2) {
+    color: green;
+}
+
+.main-dashboard .task {
+    position: relative;
+    padding: 1rem 2rem;
+}
+
+.main-dashboard .task .task-addition {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: .3rem;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(36, 51, 47, 0.877);
+    border-radius: 50%;
+    margin: 1rem 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.main-dashboard .task .task-addition:hover {
+    animation: spin;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    transition: .3s;
+}
+
+.main-dashboard .task-div {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 4fr 1fr;
+    border-radius: 5px;
+    box-shadow: 2px 0px 2px 3px #218cf18c;
+    padding: 10px 20px;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.main-dashboard .task-div span:last-child {
+    justify-content: center;
+    text-align: center;
+}
+
+.main-dashboard .task-div span:last-child i {
+    cursor: pointer;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.main-dashboard .task-div span:last-child i:last-child {
+    color: red;
+}
+
+.modal {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 27, 27, 0.76);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal .content {
+    position: relative;
+    /* position: absolute;
+    top: 50%;
+    right: 50%; */
+    transform: translate(50% 50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    font-family: var(--head-font);
+
+}
+
+.modal .content .input-group {
+    display: block;
+    justify-content: left;
+
+}
+
+.modal .content h2 {
+    border-bottom: 1px solid grey;
+}
+
+.modal .content .input-group textarea {
+    display: block;
+    border: 2px solid var(--primary-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal .content .input-group textarea::placeholder {
+    font-family: var(--head-font);
+}
+
+.modal .content form button {
+    padding: .5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    margin: 10px 0px;
+    font-family: var(--head-font);
+    cursor: pointer;
+}
+
+.modal .content .input-group label {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.modal .modal-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(243, 31, 31);
+    display: flex;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal .modal-close:hover {
+    animation: spin;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    transition: .3s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        color: white;
+    }
+
+    100% {
+        transform: rotate(90deg);
+        color: var(--primary-color);
+    }
+}
+
+.post-content-create {
+    min-height: 500px !important;
+    max-height: 1000px;
+}
+
+.editor-section {
+    margin-top: 2rem;
+}
+
+.user-info img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    align-items: center;
+}
+
+/* User */
+
+main .user-list {
+    display: block;
+    padding: 1rem;
+}
+
+main .user-list .list-items {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+main .user-list .list-items .item, main .user-list .list-head {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    font-family: var(--head-font);
+    align-items: center;
+}
+
+.f-bold {
+    font-weight: bold;
+}
+
+main .user-list select {
+    background-color: rgb(150, 149, 149);
+    margin-left: 1rem;
+    padding: .3rem 2rem;
+    color: rgb(17, 17, 17);
+}
+
+main .user-list button {
+    padding: .3rem 1rem;
+    background-color: var(--primary-color);
+    font-family: var(--head-font);
+    font-weight: bolder;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.user-list .list-actions {
+    margin-top: 1rem;
+}
+
+.user-actions a:last-child {
+    color: rgb(128, 0, 0);
+}
+
+.user-actions a:first-child {
+    color: rgb(0, 87, 128);
+}
+
+.user-actions a:nth-child(2) {
+    color: green;
+}
+
+.pagination {
+    margin: 1rem auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+
+}
+
+.pagination span {
+    margin: 0rem .2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #218DF1;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    font-family: var(--Lexend);
+    cursor: pointer;
+    color: rgb(0, 12, 63);
+    font-weight: bold;
+    transition: .3s all;
+}
+
+.pagination span i {
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.pagination span.active {
+    background-color: rgb(34, 12, 12);
+    color: white;
+}
+
+.pagination span:hover {
+    transition: .3s all;
+    background-color: #1b2630;
+    color: white;
+}
+.action-item {
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+.action-item.delete {
+    background-color: rgba(99, 22, 48, 0.274);
+    color: rgb(136, 19, 19);
+}
+
+.action-item.create {
+    background-color: rgba(91, 189, 71, 0.932);
+}
+
+.action-item.edit {
+    background-color: rgb(194, 247, 97);
+}
+
+.action-item.draft {
+    background-color: rgba(4, 44, 97, 0.664)
+}
+
+.action-item.publish {
+    background-color: #6bc74faf;
+}
+
+@media screen and (max-width: 1250px) {
+    body {
+        min-width: 300px !important;
+    }
+}
+
+@media screen and (max-width: 1182px) {
+    body {
+        min-width: 300px !important;
+    }
+
+}

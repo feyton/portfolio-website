@@ -1,0 +1,257 @@
+.about-hero {
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.about-hero .bg-light {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.623)), url("https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.about-hero .about-text {
+    padding-top: 3rem;
+}
+
+.about-hero .about-text h2 {
+    font-size: 5rem;
+    color: var(--light-blue);
+    margin: 1rem;
+    font-family: var(--Lexend);
+}
+
+.about-hero .about-text h3 {
+    font-size: 3rem;
+    color: white;
+    margin: 1rem;
+    font-family: var(--Lexend);
+}
+
+.about-hero .picture {
+    width: 50vh;
+    height: 50vh;
+    margin: 10px auto;
+    border: 20px solid orange;
+    position: relative;
+}
+
+
+
+.about-hero .picture .img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transform: translate(-20%);
+    position: absolute;
+    top: -30px;
+    left: 0px;
+    border: 2px solid cyan;
+
+}
+
+.about-hero .picture .img-1 {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transform: translate(70%);
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    border: 2px solid cyan;
+
+}
+
+.about-me {
+    position: relative;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.skills-xp-profession {
+
+    margin: 2rem 1rem;
+    box-shadow: 1px 1px 3px 1px grey;
+    font-family: var(--Lexend);
+    position: relative;
+    padding-top: 2rem;
+
+}
+
+.skills-xp-profession .drop-menu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px;
+    padding: 0px;
+    margin: 0px;
+
+
+}
+
+.skills-xp-profession .drop-menu li {
+    padding: .3rem;
+}
+
+.skills-xp-profession .drop-menu li:first-child {
+    background-color: rgb(141, 132, 132);
+}
+
+.skills-xp-profession .drop-menu li:nth-child(2) {
+    background-color: rgb(116, 48, 48);
+}
+
+.skills-xp-profession .drop-menu li:last-child {
+    background-color: rgb(27, 121, 116);
+}
+
+.drop-menu-item.active {
+    background-color: #fff !important;
+    color: black;
+    font-weight: bolder;
+}
+
+.skills-xp-profession .drop-menu li i {
+    margin-left: 1rem;
+    pointer-events: none;
+}
+
+.about-info.d-none {
+    display: none;
+}
+
+.about-me ul li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+
+.about-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    text-align: left;
+}
+
+.scroll {
+    position: absolute;
+    left: 50%;
+    bottom: -50px;
+    background-color: rgb(24, 12, 12);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+.request h2 {
+    font-size: 2rem;
+}
+
+.about-info .text {
+    padding-top: 2rem;
+    border-left: 1px solid grey;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+
+}
+
+.about-info .text h3 {
+    padding: 1rem;
+    color: blue;
+}
+
+.about-info .text i {
+    margin-right: 10px;
+    color: green;
+}
+
+.about-info .text h4 {
+    background-color: rgb(219, 213, 213);
+    padding: .2rem 1rem;
+    border-radius: 10px;
+    width: fit-content;
+    text-align: center;
+    margin: 5px auto;
+}
+
+.about-info .text li {
+    padding: .2rem 1rem;
+}
+
+.img-tab img {
+    width: 100%;
+    object-fit: scale-down;
+    height: 100%;
+}
+
+.drop-menu .active {
+    background-color: #fff;
+    color: black;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:900px) {
+    .about-hero {
+        height: 80vh;
+        position: relative;
+        text-align: center;
+        justify-content: center;
+
+    }
+
+    .about-hero .picture {
+        width: 30vh;
+        height: 30vh;
+    }
+
+    .about-hero .bg-light {
+
+        height: 40vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .about-info {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .about-info .text {
+        border-left: none;
+        border-bottom: 1px solid grey;
+    }
+
+    .about-hero .about-text h2 {
+        font-size: 3rem;
+    }
+
+    .about-hero .about-text h3 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width:430px) {
+    .about-hero .picture {
+        width: 25vh;
+        height: 25vh;
+    }
+}

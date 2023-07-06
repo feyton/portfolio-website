@@ -1,0 +1,119 @@
+{% extends '../base.html' %}
+{% load static %}
+
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/profile.css" class="css">
+{% endblock extra_css %}
+
+
+{% block content %}
+<div class="user-profile">
+
+    <div class="about-user">
+        <h2 class="head-title">My Profile</h2>
+        <hr>
+        <div class="user-card">
+
+            <img src="" alt="" class="profile-picture">
+            <div class="update-picture">
+                <span>Change Picture</span>
+            </div>
+
+
+            <div class="user-info-render ">
+                <div class="loader-for-div center"><i class="fas fa-spinner fa-spin"></i></div>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-update-profile">Update Profile</button>
+                <button class="btn btn-delete-account">Delete account</button>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="update-profile update-div d-none">
+        <h2>Update Profile</h2>
+        <hr>
+        <div class="form-div">
+            <form action="#none" id="update-profile-form">
+                <input type="text" placeholder="First name" value="" name="firstName">
+                <input type="text" placeholder="Last name" value="" name="lastName">
+                <input type="url" placeholder="Link to Facebook" id="profile-facebook" value="" class=""
+                    name="facebook">
+                <input type="url" placeholder="Link to Twitter" id="profile-twitter" class="" name="twitter">
+                <textarea name="bio" id="profile-bio" cols="30" rows="3" maxlength="200" placeholder="Biography"
+                    value="Test"></textarea>
+                <input type="submit" value="Update" class="btn btn-primary btn-submit">
+
+            </form>
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+{% block modal %}
+<div class="modal d-none">
+
+    <form action="#none" class="update-profile-picture">
+        <h2>Change Picture</h2>
+        <input type="file" class="custom-file-input" name="image" id="user-image" placeholder="Profile picture" required
+            accept="image/*">
+        <div class="image-div">
+        </div>
+        <div class="button-group">
+            <input type="submit" value="Upload" class="btn btn-secondary">
+
+
+            <button class="btn btn-primary hideModal" id="hideModal">CANCEL</button>
+        </div>
+
+    </form>
+
+</div>
+<div class="modal d-none" id="delete-account">
+    <form action="#none" class="delete-account-form">
+        <h2>Delete account</h2>
+        <input type="password" placeholder="Password" name="password" required>
+
+        <div class="button-group">
+            <input type="submit" value="Delete" class="btn btn-secondary">
+            <button class="btn btn-primary hideModalDelete">CANCEL</button>
+        </div>
+    </form>
+</div>
+{% endblock modal %}
+
+
+
+
+
+<!-- MODAL -->
+
+{% block extra_js %}
+<script src="/static/js/profile.js" defer type="module"></script>
+{% endblock extra_js %}
+
+
+
+
+
+</body>
+
+</html>

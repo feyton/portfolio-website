@@ -1,0 +1,29 @@
+{% extends '../base.html' %}
+{% load static %}
+
+
+{% block title %}
+Blog
+{% endblock title %}
+
+<main>
+
+    {% block content %}
+    <div class="trending-blogs">
+        <h2 class="head-title">Trending Posts</h2>
+        <div class="blog-section">
+            {% include "../includes/posts.html" with posts=posts %}
+
+            <aside class="sidebar">
+
+                {% include "../includes/categories.html" with categories=categories %}
+                <h1 class="newsletter">Newsletter</h1>
+                <form action="#none">
+                    <input type="email" name="email" placeholder="E-mail">
+                    <button class="disabled">Join</button>
+                </form>
+
+            </aside>
+        </div>
+    </div>
+    {% endblock content %}

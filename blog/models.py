@@ -63,6 +63,14 @@ class Post(models.Model):
         upload_to='blog', blank=True, null=True, default='/blog/default.jpg')
     visits = models.PositiveIntegerField(default=1)
 
+    @property
+    def imgUrl(self):
+        try:
+            url = self.thumbnail.url
+        except:
+            url = ""
+        return url
+
     def __str__(self):
         return self.title
 

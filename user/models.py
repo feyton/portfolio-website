@@ -125,6 +125,14 @@ class Profile(models.Model):
     whatsapp_username = models.CharField(blank=True, null=True, max_length=255)
     twitter_username = models.CharField(blank=True, null=True, max_length=255)
 
+    @property
+    def imgUrl(self):
+        try:
+            url = self.image.url
+        except:
+            url = ""
+        return url
+
     def __str__(self):
         return '{}-Profile'.format(self.user.first_name)
 
