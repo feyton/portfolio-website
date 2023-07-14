@@ -1,21 +1,9 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
-
 import os
 import sys
-from decouple import config
-
-MODE = config('MODE', default="dev")
-
-if MODE == 'production':
-    setting = 'feyton.settings.production'
-else:
-    setting = 'feyton.settings.local'
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                          setting)
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "feyton.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -27,5 +15,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
