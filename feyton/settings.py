@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Variables
 MODE = config("MODE", default="production")
 DEBUG = config("DEBUG", default=False)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*.feyton.co.rw"]
 SECRET_KEY = config("SECRET_KEY", default="insecure-add-key")
 
 
@@ -144,14 +144,14 @@ MESSAGE_TAGS = {
 HITCOUNT_KEEP_HIT_ACTIVE = 2
 HITCOUNT_HITS_PER_IP_LIMIT = 10
 GRAVATAR_DEFAULT_IMAGE = "https://res.cloudinary.com/feyton/image/upload/v1653155678/zpvyjo3vpemjrjwikcyc.jpg"
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
 
 if MODE == "dev":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     EMAIL_HOST_USER = "no-reply@feyton.co.rw"
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -159,10 +159,8 @@ if MODE == "dev":
 if MODE == "production":
     STATIC_URL = "/static/"
     STATIC_ROOT = "/var/www/feyton.co.rw/static"
-
     MEDIA_URL = "/media/"
     MEDIA_ROOT = "/var/www/feyton.co.rw/media"
-    DATABASES = {"default": dj_database_url.parse(config("DATABASE_URL", default=""))}
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
@@ -176,7 +174,7 @@ if MODE == "production":
         "MAILJET_SECRET_KEY": config("MAILJET_SECRET_KEY", default=""),
     }
     ALLOWED_HOSTS = [
-        "*.feyton.co.rw",
+        "feyton.co.rw",
     ]
 
 CSRF_TRUSTED_ORIGINS = [

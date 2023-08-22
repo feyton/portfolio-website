@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "portfolio_website"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8 || ^3.11"
 Django = "^4.2.3"
 django-allauth = "^0.54.0"
 django-decouple = "^2.1"
@@ -21,6 +21,7 @@ django-imagekit = "^4.1.0"
 cloudinary = "^1.33.0"
 django-ckeditor = "^6.6.1"
 pillow = "^10.0.0"
+gunicorn = "^21.2.0"
 
 
 [build-system]
