@@ -5,7 +5,7 @@ charset-normalizer==3.3.2
 cryptography==42.0.5
 defusedxml==0.7.1
 dj-database-url==2.1.0
-Django==5.0.8
+Django==5.0.9
 django-allauth==0.61.1
 django-anymail==10.3
 django-autoslug==1.9.9
